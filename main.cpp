@@ -24,7 +24,7 @@ int main()
 	sceCtrlSetSamplingMode( SCE_CTRL_MODE_DIGITAL );
 	SceCtrlData control;
 	
-	Snake snake (20, 20);
+	Snake snake (20, 20, {0,255,0,255});
 
 	bool run = true;
 	while (run)
@@ -32,7 +32,6 @@ int main()
 		SDL_SetRenderDrawColor( renderer, 0, 0, 0, 255 );
 		SDL_RenderClear( renderer );
 		
-		SDL_SetRenderDrawColor( renderer, 255, 0, 0, 255 );
 		snake.draw( *renderer );
 
 		SDL_RenderPresent( renderer );

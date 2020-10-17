@@ -8,15 +8,18 @@ class Snake
 {
 	public:
 		Snake (void);
-		Snake (int x, int y);
+		Snake (int x, int y, SDL_Color color);
 		
 		void setSize (int size);
 
 		void draw (SDL_Renderer & renderer);
 	
 	private:
-		Vector2d head_;
+		SDL_Color color_;
+		
 		int size_;
+		
+		Vector2d head_;
 };
 
 #endif

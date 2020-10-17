@@ -3,13 +3,15 @@
 #define DEFAULT_SIZE 50
 
 Snake::Snake (void):
-	head_(),
-	size_ (DEFAULT_SIZE)
+	color_({255,0,0,255}),
+	size_ (DEFAULT_SIZE),
+	head_ ()
 {}
 
-Snake::Snake (int x, int y):
-	head_ (x, y),
-	size_ (DEFAULT_SIZE)
+Snake::Snake (int x, int y, SDL_Color color):
+	color_(color),
+	size_ (DEFAULT_SIZE),
+	head_ (x, y)
 {}
 
 void Snake::setSize( int size )
@@ -26,5 +28,6 @@ void Snake::draw (SDL_Renderer & renderer)
 	square.w = size_;
 	square.h = size_;
 
+	SDL_SetRenderDrawColor( &renderer, color_.r, color_.g, color_.b, color_.a );
 	SDL_RenderFillRect( &renderer, &square );
 }
