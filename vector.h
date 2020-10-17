@@ -10,7 +10,9 @@ class Vector2d
 		Vector2d (void);
 		Vector2d (int x, int y);
 		Vector2d (const Vector2d & rhs);
-		
+			
+		~Vector2d (void);
+
 		const Vector2d & operator = (const Vector2d & rhs);
 		const Vector2d & operator + (const Vector2d & rhs);
 		const Vector2d & operator - (const Vector2d & rhs);

@@ -17,6 +17,9 @@ Vector2d::Vector2d (const Vector2d & rhs):
 	y (rhs.y)
 {}
 
+Vector2d::~Vector2d (void) {}
+
+
 const Vector2d & Vector2d::operator = (const Vector2d & rhs)
 {
 	if ( &rhs != &(*this) )
