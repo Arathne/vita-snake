@@ -18,6 +18,9 @@ class Vector2d
 		const Vector2d & operator - (const Vector2d & rhs);
 		const Vector2d & operator += (const Vector2d & rhs);
 		const Vector2d & operator -= (const Vector2d & rhs);
+		
+		const Vector2d & operator * (const int & rhs);
+		const Vector2d & operator *= (const int & rhs);
 };
 
 #endif

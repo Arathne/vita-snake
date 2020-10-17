@@ -56,3 +56,16 @@ const Vector2d & Vector2d::operator -= (const Vector2d & rhs)
 {
 	return *this - rhs;
 }
+
+const Vector2d & Vector2d::operator * (const int & rhs)
+{
+	x *= rhs;
+	y *= rhs;
+
+	return *this;
+}
+
+const Vector2d & Vector2d::operator *= (const int & rhs)
+{
+	return *this * rhs;
+}
