@@ -1,4 +1,5 @@
 #include <psp2/kernel/processmgr.h>
+#include "src/States/StateManager.h"
 #include "src/GameRenderer.h"
 
 int main()
@@ -8,9 +9,7 @@ int main()
 	bool run = true;
 	while (run)
 	{
-		GameRenderer::clear();
-		GameRenderer::drawRect(30, 30, 100, 100);
-		GameRenderer::present();
+		StateManager::process();
 	}
 	
 	GameRenderer::destroy();
