@@ -1,7 +1,7 @@
 #include <psp2/kernel/processmgr.h>
-#include <SDL2/SDL.h>
 
 int main()
 {
+	sceKernelExitProcess(0);
 	return 0;
 }
