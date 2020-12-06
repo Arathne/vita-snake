@@ -15,5 +15,4 @@ int main()
 	GameRenderer::destroy();
 
 	sceKernelExitProcess(0);
-	return 0;
 }

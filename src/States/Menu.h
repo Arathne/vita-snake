@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include "Node.h"
+#include "../Text.h"
 
 class Menu : public Node
 {
@@ -10,6 +11,9 @@ class Menu : public Node
 		~Menu (void);
 
 		Node* process (void);
+	
+	private:
+		Text* text_;
 };
 
 #endif
