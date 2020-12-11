@@ -1,7 +1,6 @@
 #include "StateManager.h"
 
 Node* StateManager::state_ = nullptr;
-GameRenderer StateManager::renderer_;
 
 void StateManager::process (void)
 {

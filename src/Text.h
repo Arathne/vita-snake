@@ -8,7 +8,7 @@
 class Text
 {
 	public:
-		Text (void);
+		Text (const char* content, const char* path, int fontSize, SDL_Renderer & renderer);
 		Text (int x, int y, const char* content, const char* path, int fontSize, SDL_Renderer & renderer);
 		~Text (void);
 
@@ -26,18 +26,20 @@ class Text
 		int getWidth (void);
 		int getHeight (void);
 
-
 	private:
+		Text (void);
 		void updateTexture (void);
 		
 		const char* content_;
 		const char* path_;
 		int fontSize_;
+		
 		glm::vec2 position_;
-		TTF_Font* font_;
-		SDL_Texture* texture_;
 		int width_;
 		int height_;
+		
+		TTF_Font* font_;
+		SDL_Texture* texture_;
 		SDL_Renderer* renderer_;
 };
 

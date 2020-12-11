@@ -2,7 +2,6 @@
 #define MENU_H
 
 #include "Node.h"
-#include "../Text.h"
 
 class Menu : public Node
 {
@@ -13,7 +12,12 @@ class Menu : public Node
 		Node* process (void);
 	
 	private:
-		Text* text_;
+		void spacing (Text & current, Text & previous);
+		
+		Text title_;
+		Text play_;
+		Text options_;
+		Text highscores_;
 };
 
 #endif

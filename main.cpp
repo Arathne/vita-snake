@@ -12,6 +12,7 @@ int main()
 		StateManager::process();
 	}
 	
+	StateManager::reset();
 	GameRenderer::destroy();
 
 	sceKernelExitProcess(0);

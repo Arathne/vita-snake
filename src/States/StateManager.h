@@ -11,7 +11,6 @@ class StateManager
 		static void process (void);
 
 	private:
-		static GameRenderer renderer_;
 		static Node* state_;
 };
 

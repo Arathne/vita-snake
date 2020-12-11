@@ -1,13 +1,21 @@
 #include "Menu.h"
 
-Menu::Menu (void):
-	text_(new Text(20, 20, "hello world", "app0:/assets/texterius.ttf", 30, GameRenderer::getRenderer()))
-{}
+#define SPACING 50
 
-Menu::~Menu (void) 
+Menu::Menu (void):
+	title_(Text("SNAKE", "app0:/assets/joystix.ttf", 100, GameRenderer::getRenderer())),
+	play_(Text("PLAY", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer())),
+	options_(Text("OPTIONS", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer())),
+	highscores_(Text("HIGHSCORES", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer()))
 {
-	delete text_;
+	title_.setPosition( (960/2)-(title_.getWidth()/2), SPACING );
+	
+	Menu::spacing(play_, title_);
+	Menu::spacing(options_, play_);
+	Menu::spacing(highscores_, options_);
 }
+
+Menu::~Menu (void) {}
 
 Node* Menu::process (void)
 {
@@ -16,9 +24,18 @@ Node* Menu::process (void)
 	Color blue(0, 0, 255, 255);
 	
 	GameRenderer::clear();
-	GameRenderer::drawRect(50, 50, 100, 100, blue);
-	GameRenderer::drawText(*text_);
+	
+	GameRenderer::drawText(title_);
+	GameRenderer::drawText(play_);
+	GameRenderer::drawText(options_);
+	GameRenderer::drawText(highscores_);
+
 	GameRenderer::present();
 
 	return nextState;
+}
+
+void Menu::spacing (Text & current, Text & previous)
+{
+	current.setPosition( (960/2)-(current.getWidth()/2), previous.getPositionY() + previous.getHeight() + SPACING );
 }

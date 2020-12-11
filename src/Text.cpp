@@ -1,20 +1,26 @@
 #include "Text.h"
 
-Text::Text (void):
-	content_(""),
-	path_(""),
-	fontSize_(16),
+/* CONSTRUCTORS */
+
+Text::Text (const char* content, const char* path, int fontSize, SDL_Renderer & renderer):
+	content_(content),
+	path_(path),
+	fontSize_(fontSize),
 	position_(glm::vec2((int) 0, (int) 0)),
-	width_(0),
-	height_(0)
-{}
+	font_(TTF_OpenFont(path, fontSize)),
+	texture_(nullptr),
+	renderer_(&renderer)
+{
+	Text::updateTexture();
+}
 
 Text::Text (int x, int y, const char* content, const char* path, int fontSize, SDL_Renderer & renderer):
 	content_(content),
 	path_(path),
 	fontSize_(fontSize),
-	position_(glm::vec2(x, y)),
+	position_(glm::vec2((int) x, (int) y)),
 	font_(TTF_OpenFont(path, fontSize)),
+	texture_(nullptr),
 	renderer_(&renderer)
 {
 	Text::updateTexture();
