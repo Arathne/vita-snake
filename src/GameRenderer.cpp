@@ -18,6 +18,8 @@ void GameRenderer::destroy (void)
 
 	if (window_ != nullptr)
 		SDL_DestroyWindow(window_);
+	
+	TTF_Quit();
 }
 
 void GameRenderer::present (void)
@@ -50,9 +52,20 @@ void GameRenderer::drawText (Text & text)
 	rectangle.y = text.getPositionY();
 	rectangle.w = text.getWidth();
 	rectangle.h = text.getHeight();
-
+	
 	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
 	SDL_RenderCopy( renderer_, &text.getTexture(), nullptr, &rectangle );
+}
+
+void GameRenderer::drawLog (void)
+{
+	int size = Log::getRenderLength();
+	Text* text = Log::getRenderArray();
+	
+	for (int i = 0; i < size; i++)
+	{
+		GameRenderer::drawText( text[i] );
+	}
 }
 
 SDL_Renderer & GameRenderer::getRenderer (void)

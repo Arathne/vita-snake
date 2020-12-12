@@ -3,6 +3,7 @@ set( CPP
 	src/Color.cpp
 	src/Text.cpp
 	src/GameRenderer.cpp
+	src/Log.cpp
 	src/States/StateManager.cpp
 	src/States/Menu.cpp
 )

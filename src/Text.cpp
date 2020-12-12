@@ -2,6 +2,16 @@
 
 /* CONSTRUCTORS */
 
+Text::Text (void):
+	content_("-"),
+	path_(""),
+	fontSize_(0),
+	position_(glm::vec2((int) 0, (int) 0)),
+	font_(nullptr),
+	texture_(nullptr),
+	renderer_(nullptr)
+{}
+
 Text::Text (const char* content, const char* path, int fontSize, SDL_Renderer & renderer):
 	content_(content),
 	path_(path),
@@ -37,9 +47,21 @@ Text::~Text (void)
 
 /* SETTERS */
 
+void Text::setRenderer(SDL_Renderer & renderer)
+{
+	renderer_ = &renderer;
+}
+
 void Text::setContent (const char* content)
 {
 	content_ = content;
+	Text::updateTexture();
+}
+
+void Text::setContent (int number)
+{
+	std::string s = std::to_string(number);
+	content_ = s.c_str();
 	Text::updateTexture();
 }
 

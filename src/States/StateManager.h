@@ -7,7 +7,7 @@
 class StateManager
 {
 	public:
-		static void reset (void);
+		static void destroy (void);
 		static void process (void);
 
 	private:

@@ -14,7 +14,7 @@ void StateManager::process (void)
 		delete current;
 }
 
-void StateManager::reset (void)
+void StateManager::destroy (void)
 {
 	if (state_ != nullptr)
 		delete state_;

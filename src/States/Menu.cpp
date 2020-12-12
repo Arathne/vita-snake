@@ -9,10 +9,22 @@ Menu::Menu (void):
 	highscores_(Text("HIGHSCORES", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer()))
 {
 	title_.setPosition( (960/2)-(title_.getWidth()/2), SPACING );
-	
 	Menu::spacing(play_, title_);
 	Menu::spacing(options_, play_);
 	Menu::spacing(highscores_, options_);
+
+	Log::add("LOG 1");
+	Log::add("LOG 2");
+	Log::add("LOG 3");
+	Log::add("LOG 4");
+	Log::add("LOG 5");
+	Log::add("LOG 6");
+	Log::add("LOG 7");
+	Log::add("LOG 8");
+	Log::add("LOG 9");
+	Log::add("LOG 10");
+	Log::add("LOG 11");
+	Log::add("LOG 12");
 }
 
 Menu::~Menu (void) {}
@@ -29,7 +41,8 @@ Node* Menu::process (void)
 	GameRenderer::drawText(play_);
 	GameRenderer::drawText(options_);
 	GameRenderer::drawText(highscores_);
-
+	GameRenderer::drawLog();
+	
 	GameRenderer::present();
 
 	return nextState;
