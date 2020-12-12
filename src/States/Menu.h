@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include "Node.h"
+#include "../Input.h"
 
 class Menu : public Node
 {

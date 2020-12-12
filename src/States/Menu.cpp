@@ -13,18 +13,7 @@ Menu::Menu (void):
 	Menu::spacing(options_, play_);
 	Menu::spacing(highscores_, options_);
 
-	Log::add("LOG 1");
-	Log::add("LOG 2");
-	Log::add("LOG 3");
-	Log::add("LOG 4");
-	Log::add("LOG 5");
-	Log::add("LOG 6");
-	Log::add("LOG 7");
-	Log::add("LOG 8");
-	Log::add("LOG 9");
-	Log::add("LOG 10");
-	Log::add("LOG 11");
-	Log::add("LOG 12");
+	Log::add("state :: menu");
 }
 
 Menu::~Menu (void) {}
@@ -33,6 +22,12 @@ Node* Menu::process (void)
 {
 	Node* nextState = this;
 	
+	if (Input::isActive(CROSS))
+		Log::add("cross has been pressed");	
+	if (Input::isActive(CIRCLE))
+		Log::add("circle has been pressed");
+	
+
 	Color blue(0, 0, 255, 255);
 	
 	GameRenderer::clear();
