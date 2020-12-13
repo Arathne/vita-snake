@@ -12,9 +12,8 @@ class Log
 		static void render (SDL_Renderer & renderer, int length);
 		static void add (const char* message);
 		static void destroy (void);
-
-		static Text* getRenderArray (void);
-		static int getRenderLength (void);
+		
+		static void draw (void);
 
 	private:
 		static void update (void);

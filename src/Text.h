@@ -6,9 +6,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <glm/glm.hpp>
 
-/* NOTE: game renderer has to be passed to prevent a circular dependency 
- * NOTE: game renderer is needed to generate a texture for the text
-*/
+#include "GameRenderer.h"
 
 class Text
 {
@@ -16,15 +14,18 @@ class Text
 		Text (void);
 		Text (const char* content, const char* path, int fontSize, SDL_Renderer & renderer);
 		Text (int x, int y, const char* content, const char* path, int fontSize, SDL_Renderer & renderer);
+		Text (const Text & rhs);
 		~Text (void);
+		
+		void draw (void);
 
-		void setContent(const char* content);
-		void setContent(int number);
-		void setPosition(int x, int y);
-		void setPositionX(int x);
-		void setPositionY(int y);
-		void setFont(const char* path, int fontSize);
-		void setRenderer(SDL_Renderer & renderer);
+		void setContent (const char* content);
+		void setContent (int number);
+		void setPosition (int x, int y);
+		void setPositionX (int x);
+		void setPositionY (int y);
+		void setFont (const char* path, int fontSize);
+		void setRenderer (SDL_Renderer & renderer);
 
 		const char* getContent (void) const;
 		glm::vec2 getPosition (void) const;
@@ -33,6 +34,8 @@ class Text
 		int getPositionY (void);
 		int getWidth (void);
 		int getHeight (void);
+
+		const Text & operator = (const Text & rhs);
 
 	private:
 		void updateTexture (void);

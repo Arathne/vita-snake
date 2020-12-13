@@ -1,6 +1,7 @@
 #include "Menu.h"
 
 #define SPACING 50
+#define STARTX ((960/2)-(title_.getWidth()/2)
 
 Menu::Menu (void):
 	title_(Text("SNAKE", "app0:/assets/joystix.ttf", 100, GameRenderer::getRenderer())),
@@ -9,9 +10,9 @@ Menu::Menu (void):
 	highscores_(Text("HIGHSCORES", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer()))
 {
 	title_.setPosition( (960/2)-(title_.getWidth()/2), SPACING );
-	Menu::spacing(play_, title_);
-	Menu::spacing(options_, play_);
-	Menu::spacing(highscores_, options_);
+	play_.setPosition( (960/2)-(play_.getWidth()/2), title_.getPositionY() + title_.getHeight() + SPACING );
+	options_.setPosition( (960/2)-(options_.getWidth()/2), play_.getPositionY() + play_.getHeight() + SPACING );
+	highscores_.setPosition( (960/2)-(highscores_.getWidth()/2), options_.getPositionY() + options_.getHeight() + SPACING );
 
 	Log::add("state :: menu");
 }
@@ -22,28 +23,22 @@ Node* Menu::process (void)
 {
 	Node* nextState = this;
 	
-	if (Input::isActive(CROSS))
-		Log::add("cross has been pressed");	
-	if (Input::isActive(CIRCLE))
-		Log::add("circle has been pressed");
-	
+	Menu::input();
 
-	Color blue(0, 0, 255, 255);
-	
 	GameRenderer::clear();
 	
-	GameRenderer::drawText(title_);
-	GameRenderer::drawText(play_);
-	GameRenderer::drawText(options_);
-	GameRenderer::drawText(highscores_);
-	GameRenderer::drawLog();
-	
+	Log::draw();
+	title_.draw();
+	play_.draw();
+	options_.draw();
+	highscores_.draw();
+
 	GameRenderer::present();
 
 	return nextState;
 }
 
-void Menu::spacing (Text & current, Text & previous)
+void Menu::input (void)
 {
-	current.setPosition( (960/2)-(current.getWidth()/2), previous.getPositionY() + previous.getHeight() + SPACING );
+	
 }

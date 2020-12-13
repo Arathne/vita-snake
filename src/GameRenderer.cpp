@@ -33,7 +33,7 @@ void GameRenderer::clear (void)
 	SDL_RenderClear( renderer_ );
 }
 
-void GameRenderer::drawRect (int x, int y, int w, int h, Color color)
+void GameRenderer::draw (int x, int y, int w, int h, Color color)
 {
 	SDL_Rect rectangle;
 	rectangle.x = x;
@@ -45,27 +45,16 @@ void GameRenderer::drawRect (int x, int y, int w, int h, Color color)
 	SDL_RenderFillRect( renderer_, &rectangle );
 }
 
-void GameRenderer::drawText (Text & text)
+void GameRenderer::draw (int x, int y, int w, int h, SDL_Texture & texture)
 {
 	SDL_Rect rectangle;
-	rectangle.x = text.getPositionX();
-	rectangle.y = text.getPositionY();
-	rectangle.w = text.getWidth();
-	rectangle.h = text.getHeight();
+	rectangle.x = x;
+	rectangle.y = y;
+	rectangle.w = w;
+	rectangle.h = h;
 	
 	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
-	SDL_RenderCopy( renderer_, &text.getTexture(), nullptr, &rectangle );
-}
-
-void GameRenderer::drawLog (void)
-{
-	int size = Log::getRenderLength();
-	Text* text = Log::getRenderArray();
-	
-	for (int i = 0; i < size; i++)
-	{
-		GameRenderer::drawText( text[i] );
-	}
+	SDL_RenderCopy( renderer_, &texture, nullptr, &rectangle );
 }
 
 SDL_Renderer & GameRenderer::getRenderer (void)

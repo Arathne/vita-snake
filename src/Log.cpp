@@ -43,12 +43,10 @@ void Log::update (void)
 	}
 }
 
-int Log::getRenderLength (void)
+void Log::draw (void)
 {
-	return render_;
-}
-
-Text* Log::getRenderArray (void)
-{
-	return draw_;
+	for (int i = 0; i < render_; i++)
+	{
+		draw_[i].draw();
+	}
 }

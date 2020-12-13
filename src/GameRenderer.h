@@ -5,8 +5,6 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "Color.h"
-#include "Text.h"
-#include "Log.h"
 
 class GameRenderer
 {
@@ -16,9 +14,8 @@ class GameRenderer
 		static void clear (void);
 		static void present (void);
 		
-		static void drawRect (int x, int y, int w, int h, Color color);
-		static void drawText (Text & text);
-		static void drawLog (void);
+		static void draw (int x, int y, int w, int h, Color color);
+		static void draw (int x, int y, int w, int h, SDL_Texture & texture );
 
 		static SDL_Renderer & getRenderer (void);
 		

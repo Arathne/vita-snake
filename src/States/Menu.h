@@ -13,12 +13,12 @@ class Menu : public Node
 		Node* process (void);
 	
 	private:
-		void spacing (Text & current, Text & previous);
+		void input (void);
 		
-		Text title_;
-		Text play_;
-		Text options_;
-		Text highscores_;
+		Text title_;	
+		Text play_;	
+		Text options_;	
+		Text highscores_;	
 };
 
 #endif

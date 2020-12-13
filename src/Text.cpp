@@ -36,6 +36,18 @@ Text::Text (int x, int y, const char* content, const char* path, int fontSize, S
 	Text::updateTexture();
 }
 
+Text::Text (const Text & rhs):
+	content_(rhs.content_),
+	path_(rhs.path_),
+	fontSize_(rhs.fontSize_),
+	position_(rhs.position_),
+	width_(rhs.width_),
+	height_(rhs.height_),
+	font_(rhs.font_),
+	texture_(rhs.texture_),
+	renderer_(rhs.renderer_)
+{}
+
 Text::~Text (void)
 {
 	if (font_ != nullptr)
@@ -129,6 +141,31 @@ int Text::getWidth (void)
 int Text::getHeight (void)
 {
 	return height_;
+}
+
+void Text::draw (void)
+{
+	GameRenderer::draw(position_.x, position_.y, width_, height_, *texture_);
+}
+
+/* OPERATORS */
+
+const Text & Text::operator = (const Text & rhs)
+{
+	if (&rhs != &(*this))
+	{
+		content_ = rhs.content_;
+		path_ = rhs.path_;
+		fontSize_ = rhs.fontSize_;
+		position_ = rhs.position_;
+		width_ = rhs.width_;
+		height_ = rhs.height_;
+		font_ = rhs.font_;
+		texture_ = rhs.texture_;
+		renderer_ = rhs.renderer_;
+	}
+
+	return *this;
 }
 
 /* PRIVATE */
