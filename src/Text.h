@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 
 #include "GameRenderer.h"
+#include "Color.h"
 
 class Text
 {
@@ -26,6 +27,7 @@ class Text
 		void setPositionY (int y);
 		void setFont (const char* path, int fontSize);
 		void setRenderer (SDL_Renderer & renderer);
+		void setColor (int red, int green, int blue, int alpha);
 
 		const char* getContent (void) const;
 		glm::vec2 getPosition (void) const;
@@ -34,6 +36,7 @@ class Text
 		int getPositionY (void);
 		int getWidth (void);
 		int getHeight (void);
+		Color getColor (void) const;
 
 		const Text & operator = (const Text & rhs);
 
@@ -51,6 +54,8 @@ class Text
 		TTF_Font* font_;
 		SDL_Texture* texture_;
 		SDL_Renderer* renderer_;
+
+		Color color_;
 };
 
 #endif

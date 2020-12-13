@@ -105,6 +105,10 @@ void Text::setFont (const char* path, int fontSize)
 	Text::updateTexture();
 }
 
+void Text::setColor (int red, int green, int blue, int alpha)
+{
+	color_ = Color::make(red, green, blue, alpha);
+}
 
 /* GETTERS */
 
@@ -143,9 +147,9 @@ int Text::getHeight (void)
 	return height_;
 }
 
-void Text::draw (void)
+Color Text::getColor (void) const
 {
-	GameRenderer::draw(position_.x, position_.y, width_, height_, *texture_);
+	return color_;
 }
 
 /* OPERATORS */
@@ -166,6 +170,13 @@ const Text & Text::operator = (const Text & rhs)
 	}
 
 	return *this;
+}
+
+/* METHODS */
+
+void Text::draw (void)
+{
+	GameRenderer::draw(position_.x, position_.y, width_, height_, color_, *texture_);
 }
 
 /* PRIVATE */

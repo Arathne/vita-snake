@@ -4,18 +4,18 @@
 
 int Log::render_ = 0;
 std::vector<const char*> Log::log_;
-Text* Log::draw_;
+Text* Log::text_;
 
 void Log::render (SDL_Renderer & renderer, int length)
 {
 	render_ = length;
-	draw_ = new Text[render_];
+	text_ = new Text[render_];
 	
 	int y = 0;
 
 	for (int i = 0; i < render_; i++)
 	{
-		Text* current = &(draw_[i]);
+		Text* current = &(text_[i]);
 		current -> setPositionY(y);
 		current -> setRenderer(renderer);
 		current -> setFont("app0:/assets/joystix.ttf", FONT_SIZE);
@@ -25,7 +25,7 @@ void Log::render (SDL_Renderer & renderer, int length)
 
 void Log::destroy (void)
 {
-	delete[] draw_;
+	delete[] text_;
 }
 
 void Log::add (const char* message)
@@ -39,7 +39,7 @@ void Log::update (void)
 	int i = 0;
 	for (auto it = log_.rbegin(); it != log_.rend() && i < render_; it++, i++)
 	{
-		draw_[render_-i-1].setContent(*it);
+		text_[render_-i-1].setContent(*it);
 	}
 }
 
@@ -47,6 +47,6 @@ void Log::draw (void)
 {
 	for (int i = 0; i < render_; i++)
 	{
-		draw_[i].draw();
+		text_[i].draw();
 	}
 }

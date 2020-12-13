@@ -20,7 +20,7 @@ class Log
 		
 		static int render_;
 		static std::vector<const char*> log_;
-		static Text* draw_;
+		static Text* text_;
 };
 
 #endif

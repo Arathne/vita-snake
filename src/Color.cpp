@@ -1,10 +1,10 @@
 #include "Color.h"
 
 Color::Color (void):
-	red_ ((unsigned char) 0),
-	green_ ((unsigned char) 0),
-	blue_ ((unsigned char) 0),
-	alpha_ ((unsigned char) 0)
+	red_ ((unsigned char) 255),
+	green_ ((unsigned char) 255),
+	blue_ ((unsigned char) 255),
+	alpha_ ((unsigned char) 255)
 {}
 
 Color::Color (unsigned int r, unsigned int g, unsigned int b, unsigned int a):

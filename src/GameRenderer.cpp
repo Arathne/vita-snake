@@ -45,7 +45,7 @@ void GameRenderer::draw (int x, int y, int w, int h, Color color)
 	SDL_RenderFillRect( renderer_, &rectangle );
 }
 
-void GameRenderer::draw (int x, int y, int w, int h, SDL_Texture & texture)
+void GameRenderer::draw (int x, int y, int w, int h, Color color, SDL_Texture & texture)
 {
 	SDL_Rect rectangle;
 	rectangle.x = x;
@@ -53,7 +53,7 @@ void GameRenderer::draw (int x, int y, int w, int h, SDL_Texture & texture)
 	rectangle.w = w;
 	rectangle.h = h;
 	
-	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
+	SDL_SetTextureColorMod( &texture, color.red(), color.green(), color.blue() );
 	SDL_RenderCopy( renderer_, &texture, nullptr, &rectangle );
 }
 
