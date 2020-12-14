@@ -14,7 +14,7 @@ Menu::Menu (void):
 	options_.setPosition( (960/2)-(options_.getWidth()/2), play_.getPositionY() + play_.getHeight() + SPACING );
 	highscores_.setPosition( (960/2)-(highscores_.getWidth()/2), options_.getPositionY() + options_.getHeight() + SPACING );
 	
-	Log::add("state :: menu");
+	Log::add("STATE :: MENU");
 }
 
 Menu::~Menu (void) {}
@@ -32,21 +32,22 @@ Node* Menu::process (void)
 	Log::draw();
 
 	GameRenderer::present();
+	
+	if (Input::began(SCE_CTRL_CROSS)) 
+	{
+		if (selected_ == 0)
+			nextState = new Game();
+	}
 
 	return nextState;
 }
 
 void Menu::input (void)
 {
-	if (Input::began(SCE_CTRL_UP))
+	if (Input::began(SCE_CTRL_UP) && selected_ > 0)
 		selected_--;
-	else if (Input::began(SCE_CTRL_DOWN))
+	else if (Input::began(SCE_CTRL_DOWN) && selected_ < 2)
 		selected_++;
-
-	if (selected_ < 0)
-		selected_ = 2;
-	else if (selected_ > 2)
-		selected_ = 0;
 }
 
 void Menu::drawOptions (void)

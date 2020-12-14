@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include "Node.h"
-#include "../Input.h"
+#include "Game.h"
 
 class Menu : public Node
 {

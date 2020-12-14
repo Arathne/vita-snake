@@ -45,7 +45,8 @@ Text::Text (const Text & rhs):
 	height_(rhs.height_),
 	font_(rhs.font_),
 	texture_(rhs.texture_),
-	renderer_(rhs.renderer_)
+	renderer_(rhs.renderer_),
+	color_(rhs.color_)
 {}
 
 Text::~Text (void)
@@ -167,6 +168,7 @@ const Text & Text::operator = (const Text & rhs)
 		font_ = rhs.font_;
 		texture_ = rhs.texture_;
 		renderer_ = rhs.renderer_;
+		color_ = rhs.color_;
 	}
 
 	return *this;

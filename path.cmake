@@ -5,6 +5,8 @@ set( CPP
 	src/GameRenderer.cpp
 	src/Log.cpp
 	src/Input.cpp
+	src/Rectangle.cpp
 	src/States/StateManager.cpp
 	src/States/Menu.cpp
+	src/States/Game.cpp
 )

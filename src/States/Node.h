@@ -1,8 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include "../GameRenderer.h"
 #include "../Log.h"
+#include "../Input.h"
 
 class Node
 {
