@@ -16,7 +16,7 @@ class Rectangle
 		void setPositionX (int x);
 		void setPositionY (int y);
 
-		glm::ivec2 getPosition (void) const;
+		glm::vec2 getPosition (void) const;
 		int getPositionX (void) const;
 		int getPositionY (void) const;
 
@@ -24,7 +24,7 @@ class Rectangle
 		void setWidth (int w);
 		void setHeight (int h);
 
-		glm::ivec2 getSize (void) const;
+		glm::vec2 getSize (void) const;
 		int getWidth (void) const;
 		int getHeight (void) const;
 		
@@ -34,7 +34,7 @@ class Rectangle
 		void draw (void);
 
 	private:
-		glm::ivec2 position_;
+		glm::vec2 position_;
 		int width_;
 		int height_;
 		Color color_;

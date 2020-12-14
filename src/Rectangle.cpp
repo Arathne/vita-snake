@@ -1,7 +1,7 @@
 #include "Rectangle.h"
 
 Rectangle::Rectangle (void):
-	position_(glm::ivec2(0, 0)),
+	position_(glm::vec2(0, 0)),
 	width_(0),
 	height_(0),
 	color_(Color::make(0, 255, 0, 255))
@@ -11,7 +11,7 @@ Rectangle::~Rectangle (void) {}
 		
 void Rectangle::setPosition (int x, int y)
 {
-	position_ = glm::ivec2(0, 0);
+	position_ = glm::vec2(0, 0);
 }
 
 void Rectangle::setPositionX (int x)
@@ -24,7 +24,7 @@ void Rectangle::setPositionY (int y)
 	position_.y = y;
 }
 
-glm::ivec2 Rectangle::getPosition (void) const
+glm::vec2 Rectangle::getPosition (void) const
 {
 	return position_;
 }
@@ -55,9 +55,9 @@ void Rectangle::setHeight (int h)
 	height_ = h;
 }
 
-glm::ivec2 Rectangle::getSize (void) const
+glm::vec2 Rectangle::getSize (void) const
 {
-	return glm::ivec2(width_, height_);
+	return glm::vec2(width_, height_);
 }
 
 int Rectangle::getWidth (void) const
