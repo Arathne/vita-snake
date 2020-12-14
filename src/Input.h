@@ -10,9 +10,11 @@ class Input
 	public:
 		static void mode (SceCtrlPadInputMode mode);
 		static void poll (void);
-		static bool isActive (CONTROLLER button);
+		static bool began (SceCtrlButtons button);
+		static bool ended (SceCtrlButtons button);
 
 	private:
+		static SceCtrlData previous_;
 		static SceCtrlData data_;
 };
 

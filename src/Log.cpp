@@ -34,6 +34,13 @@ void Log::add (const char* message)
 	Log::update();
 }
 
+void Log::add (int number)
+{
+	std::string s = std::to_string(number);
+	Log::add(s.c_str());
+
+}
+
 void Log::update (void)
 {
 	int i = 0;

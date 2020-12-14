@@ -14,11 +14,14 @@ class Menu : public Node
 	
 	private:
 		void input (void);
+		void drawOptions (void);
+
+		int selected_;
 		
-		Text title_;	
-		Text play_;	
-		Text options_;	
-		Text highscores_;	
+		Text title_;
+		Text play_;
+		Text options_;
+		Text highscores_;
 };
 
 #endif
