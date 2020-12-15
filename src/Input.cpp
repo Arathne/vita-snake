@@ -14,6 +14,14 @@ void Input::poll (void)
 	sceCtrlPeekBufferPositive(0, &data_, 1);	
 }
 
+bool Input::active (SceCtrlButtons button)
+{
+	if (data_.buttons == button)
+		return true;
+
+	return false;
+}
+
 bool Input::began (SceCtrlButtons button)
 {
 	if (data_.buttons == button && !(previous_.buttons == button))

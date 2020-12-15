@@ -10,19 +10,31 @@ class Rectangle
 {
 	public:
 		Rectangle (void);
+		Rectangle (float x, float y, int w, int h);
+		Rectangle (const Rectangle & rhs);
 		~Rectangle (void);
 		
-		void setPosition (int x, int y); // position
-		void setPositionX (int x);
-		void setPositionY (int y);
+		void setPosition (float x, float y); // position
+		void setPositionX (float x);
+		void setPositionY (float y);
 
 		glm::vec2 getPosition (void) const;
-		int getPositionX (void) const;
-		int getPositionY (void) const;
+		float getPositionX (void) const;
+		float getPositionY (void) const;
+		
+		void addPositionX (float x);
+		void addPositionY (float y);
+
+		void move (float x, float y); // movement
+		void moveX (float x);
+		void moveY (float y);
 
 		void setSize (int w, int h); // size
 		void setWidth (int w);
 		void setHeight (int h);
+		
+		void addWidth (int w);
+		void addHeight (int h);
 
 		glm::vec2 getSize (void) const;
 		int getWidth (void) const;
@@ -32,6 +44,8 @@ class Rectangle
 		Color getColor (void) const;
 
 		void draw (void);
+		
+		const Rectangle & operator = (const Rectangle & rhs);
 
 	private:
 		glm::vec2 position_;
