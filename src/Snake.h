@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Rectangle.h"
+#include "Log.h"
 
 enum DIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
 

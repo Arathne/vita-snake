@@ -110,6 +110,11 @@ void Rectangle::setColor (Color color)
 	color_ = color;
 }
 
+void Rectangle::setColor (int red, int green, int blue)
+{
+	color_ = Color::make(red, green, blue, 255);
+}
+
 Color Rectangle::getColor (void) const
 {
 	return color_;

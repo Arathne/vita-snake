@@ -41,6 +41,7 @@ class Rectangle
 		int getHeight (void) const;
 		
 		void setColor (Color color); // color
+		void setColor (int red, int green, int blue);
 		Color getColor (void) const;
 
 		void draw (void);

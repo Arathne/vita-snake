@@ -12,7 +12,8 @@ class Log
 	public:
 		static void render (SDL_Renderer & renderer, int length);
 		static void add (const char* message);
-		static void add (int number);
+		static void add (const int number);
+		static void add (const std::string message);
 		static void destroy (void);
 		
 		static void draw (void);

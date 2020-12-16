@@ -8,15 +8,21 @@ Snake::Snake (void):
 	tracker_(head_),
 	speed_(1)
 {
-	tracker_.setColor(Color::make(255, 0, 0, 255));
+	tracker_.setColor(255, 0, 0);
 }
 
 Snake::~Snake (void) {}
 
 void Snake::update (DIRECTION input) 
 {
-	facing_ = input;
-
+	if (input != facing_)
+	{
+		body_.push_back(head_);
+		head_ = tracker_;
+		head_.setColor(0, 255, 0);
+		facing_ = input;
+	}
+	
 	Snake::moveHead();
 }
 
@@ -48,10 +54,10 @@ void Snake::moveHead (void)
 
 void Snake::draw (void) 
 {
-	/*for (auto it = body_.begin(); it != body_.end(); it++)
+	for (auto it = body_.begin(); it != body_.end(); it++)
 	{
 		(*it).draw();
-	}*/
+	}
 	
 	head_.draw();
 	tracker_.draw();
