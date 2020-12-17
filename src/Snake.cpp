@@ -1,25 +1,33 @@
 #include "Snake.h"
 
-#define SQUARE 30
+#define SQUARE 32
 #define GAP 2
 
 Snake::Snake (void):
 	facing_(NONE),
 	next_(facing_),
-	head_(Rectangle((960/2)-(SQUARE/2), (544/2)-(SQUARE/2), SQUARE, SQUARE)),
+	head_(Rectangle((960/2)-(SQUARE/2)-GAP, (544/2)-(SQUARE/2)-GAP, SQUARE, SQUARE)),
 	tracker_(head_),
 	speed_(1),
 	counter_(0)
 {
 	tracker_.setColor(255, 0, 0);
+	
+	for (int i = 0; i < 7; i++) // prevent lag spikes when starting
+	{
+		Log::add("-");
+	}
 }
 
 Snake::~Snake (void) {}
 
 void Snake::update (void)
 {
-	if (counter_ > SQUARE + GAP)
+	if (counter_ * speed_ >= SQUARE + GAP )
 	{
+		std::string position = "X: " + std::to_string(head_.getPositionX()) + "Y: " + std::to_string(head_.getPositionY());
+		Log::add(position);
+		
 		counter_ = 0;
 		Snake::changeHead();
 	}
