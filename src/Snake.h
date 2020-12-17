@@ -19,13 +19,15 @@ class Snake
 		void draw (void);
 
 	private:
-		void moveHead (void);
+		void changeHead (void);
 
 		DIRECTION facing_;
+		DIRECTION next_;
 		Rectangle head_;
 		Rectangle tracker_;
 		std::vector<Rectangle> body_;
 		float speed_;
+		int counter_;
 };
 
 #endif
