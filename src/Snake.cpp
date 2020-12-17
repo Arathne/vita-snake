@@ -13,7 +13,7 @@ Snake::Snake (void):
 
 Snake::~Snake (void) {}
 
-void Snake::update (DIRECTION input) 
+void Snake::direction (DIRECTION input) 
 {
 	if (input != facing_)
 	{
@@ -22,11 +22,9 @@ void Snake::update (DIRECTION input)
 		head_.setColor(0, 255, 0);
 		facing_ = input;
 	}
-	
-	Snake::moveHead();
 }
 
-void Snake::moveHead (void)
+void Snake::update (void)
 {
 	if (facing_ == UP) 
 	{

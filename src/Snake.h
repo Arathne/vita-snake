@@ -14,7 +14,8 @@ class Snake
 		Snake (void);
 		~Snake (void);
 		
-		void update (DIRECTION input);
+		void update (void);
+		void direction (DIRECTION input);
 		void draw (void);
 
 	private:

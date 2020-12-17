@@ -11,10 +11,10 @@ class Game : public Node
 		~Game (void);
 
 		Node* process (void);
-	
+
 	private:
 		void input (void);
-
+		
 		Snake snake_;
 };
 
