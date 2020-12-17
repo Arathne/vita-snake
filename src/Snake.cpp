@@ -52,7 +52,7 @@ void Snake::update (void)
 
 void Snake::direction (DIRECTION input) 
 {
-	if (facing_ != input && next_ != input)
+	if (facing_ != input && next_ != input && Snake::opposite(facing_) != input)
 	{
 		next_ = input;
 	}
@@ -67,6 +67,22 @@ void Snake::changeHead (void)
 		head_.setColor(0, 255, 0);
 		facing_ = next_;
 	}
+}
+
+DIRECTION Snake::opposite (DIRECTION direction)
+{
+	DIRECTION opp = NONE;
+
+	if (direction == UP)
+		opp = DOWN;
+	else if (direction == DOWN)
+		opp = UP;
+	else if (direction == LEFT)
+		opp = RIGHT;
+	else if (direction == RIGHT)
+		opp = LEFT;
+
+	return opp;
 }
 
 void Snake::draw (void) 
