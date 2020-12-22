@@ -11,6 +11,8 @@ set( CPP
 	src/Snake/BodyLeft.cpp
 	src/Snake/BodyUp.cpp
 	src/Snake/BodyDown.cpp
+	src/Snake/BodyFactory.cpp
+	src/Snake/DirectionEnum.cpp
 	src/States/StateManager.cpp
 	src/States/Menu.cpp
 	src/States/Game.cpp

@@ -37,14 +37,12 @@ void Snake::update (void)
 		if (facing_ != NONE)
 		{
 			float offset = (counter_ * speed_) - (SQUARE + GAP);
-			Log::add(offset);
 		
 			if (offset > 0 && head_ != nullptr)
 				head_ -> backward(tracker_, offset);
 		}
 		
 		Snake::changeHead();
-		
 		counter_ = 0;
 	}
 	
@@ -61,42 +59,19 @@ void Snake::changeHead (void)
 		if (head_ != nullptr)
 			body_.push_back(head_);
 		
-		if (next_ == UP)
-			head_ = new BodyUp(tracker_);
-		else if (next_ == DOWN)
-			head_ = new BodyDown(tracker_);
-		else if (next_ == LEFT)
-			head_ = new BodyLeft(tracker_);
-		else if (next_ == RIGHT)
-			head_ = new BodyRight(tracker_);
-		
+		head_ = factory_.build(next_, tracker_);
 		head_ -> setColor(0, 255, 0);
+		
 		facing_ = next_;
 	}
 }
 
 void Snake::direction (DIRECTION input) 
 {
-	if (facing_ != input && next_ != input && Snake::opposite(facing_) != input)
+	if (facing_ != input && next_ != input && opposite(facing_) != input)
 	{
 		next_ = input;
 	}
-}
-
-DIRECTION Snake::opposite (DIRECTION direction)
-{
-	DIRECTION opp = NONE;
-
-	if (direction == UP)
-		opp = DOWN;
-	else if (direction == DOWN)
-		opp = UP;
-	else if (direction == LEFT)
-		opp = RIGHT;
-	else if (direction == RIGHT)
-		opp = LEFT;
-
-	return opp;
 }
 
 void Snake::draw (void) 

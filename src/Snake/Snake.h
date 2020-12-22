@@ -6,12 +6,8 @@
 #include "../Rectangle.h"
 #include "../Log.h"
 
-#include "BodyUp.h"
-#include "BodyDown.h"
-#include "BodyRight.h"
-#include "BodyLeft.h"
-
-enum DIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
+#include "DirectionEnum.h"
+#include "BodyFactory.h"
 
 class Snake
 {
@@ -26,10 +22,11 @@ class Snake
 	private:
 		void changeHead (void);
 
-		DIRECTION opposite (DIRECTION direction);
 		DIRECTION facing_;
 		DIRECTION next_;
 		
+		BodyFactory factory_;
+
 		Body* head_;
 		Rectangle tracker_;
 		std::vector<Body*> body_;
