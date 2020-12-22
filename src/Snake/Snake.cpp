@@ -1,17 +1,14 @@
 #include "Snake.h"
 
 #define SQUARE 32
-#define GAP 2
-
-// problem is that snake is moving too many pixels and needs to move back
-//
+#define GAP 3
 
 Snake::Snake (void):
 	facing_(NONE),
 	next_(facing_),
 	head_(nullptr),
-	tracker_(Rectangle((960/2)-(SQUARE/2)-GAP, (544/2)-(SQUARE/2)-GAP, SQUARE, SQUARE)),
-	speed_(2),
+	tracker_(Rectangle((960/2)-(SQUARE/2), (544/2)-(SQUARE/2), SQUARE, SQUARE)),
+	speed_(4),
 	counter_(0)
 {
 	tracker_.setColor(255, 0, 0);
@@ -35,10 +32,20 @@ Snake::~Snake (void)
 
 void Snake::update (void)
 {
-	if (counter_ * speed_ >= SQUARE + GAP )
+	if (counter_ * speed_ >= SQUARE + GAP)
 	{
-		counter_ = 0;
+		if (facing_ != NONE)
+		{
+			float offset = (counter_ * speed_) - (SQUARE + GAP);
+			Log::add(offset);
+		
+			if (offset > 0 && head_ != nullptr)
+				head_ -> backward(tracker_, offset);
+		}
+		
 		Snake::changeHead();
+		
+		counter_ = 0;
 	}
 	
 	if (head_ != nullptr)

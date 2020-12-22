@@ -16,7 +16,8 @@ void BodyRight::forward (Rectangle & tracker, float speed)
 
 void BodyRight::backward (Rectangle & tracker, float speed)
 {
-
+	tracker.moveX(-speed);
+	Rectangle::addWidth(-speed);
 }
 
 void BodyRight::draw (void)

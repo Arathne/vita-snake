@@ -25,7 +25,7 @@ class Snake
 
 	private:
 		void changeHead (void);
-		
+
 		DIRECTION opposite (DIRECTION direction);
 		DIRECTION facing_;
 		DIRECTION next_;

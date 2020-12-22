@@ -17,7 +17,9 @@ void BodyUp::forward (Rectangle & tracker, float speed)
 
 void BodyUp::backward (Rectangle & tracker, float speed)
 {
-
+	tracker.moveY(speed);
+	Rectangle::moveY(speed);
+	Rectangle::addHeight(-speed);
 }
 
 void BodyUp::draw (void)
