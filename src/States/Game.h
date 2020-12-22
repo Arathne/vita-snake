@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "Node.h"
-#include "../Snake.h"
+#include "../Snake/Snake.h"
 
 class Game : public Node
 {

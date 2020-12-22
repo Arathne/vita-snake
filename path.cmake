@@ -6,7 +6,11 @@ set( CPP
 	src/Log.cpp
 	src/Input.cpp
 	src/Rectangle.cpp
-	src/Snake.cpp
+	src/Snake/Snake.cpp
+	src/Snake/BodyRight.cpp
+	src/Snake/BodyLeft.cpp
+	src/Snake/BodyUp.cpp
+	src/Snake/BodyDown.cpp
 	src/States/StateManager.cpp
 	src/States/Menu.cpp
 	src/States/Game.cpp

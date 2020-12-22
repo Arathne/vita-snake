@@ -3,8 +3,13 @@
 
 #include <vector>
 
-#include "Rectangle.h"
-#include "Log.h"
+#include "../Rectangle.h"
+#include "../Log.h"
+
+#include "BodyUp.h"
+#include "BodyDown.h"
+#include "BodyRight.h"
+#include "BodyLeft.h"
 
 enum DIRECTION { UP, DOWN, LEFT, RIGHT, NONE };
 
@@ -20,13 +25,14 @@ class Snake
 
 	private:
 		void changeHead (void);
+		
 		DIRECTION opposite (DIRECTION direction);
-
 		DIRECTION facing_;
 		DIRECTION next_;
-		Rectangle head_;
+		
+		Body* head_;
 		Rectangle tracker_;
-		std::vector<Rectangle> body_;
+		std::vector<Body*> body_;
 		float speed_;
 		int counter_;
 };
