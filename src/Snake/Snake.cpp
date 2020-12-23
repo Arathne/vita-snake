@@ -9,7 +9,9 @@ Snake::Snake (void):
 	head_(nullptr),
 	tracker_(Rectangle((960/2)-(SQUARE/2), (544/2)-(SQUARE/2), SQUARE, SQUARE)),
 	speed_(4),
-	counter_(0)
+	counter_(0),
+	tail_(false),
+	max_length_(300)
 {
 	tracker_.setColor(255, 0, 0);
 	
@@ -46,9 +48,11 @@ void Snake::update (void)
 		counter_ = 0;
 	}
 	
+	Snake::moveTail();
+	
 	if (head_ != nullptr)
 		head_ -> forward(tracker_, speed_);
-
+	
 	counter_++;
 }
 
@@ -63,6 +67,7 @@ void Snake::changeHead (void)
 		head_ -> setColor(0, 255, 0);
 		
 		facing_ = next_;
+		tail_ = true;
 	}
 }
 
@@ -72,6 +77,59 @@ void Snake::direction (DIRECTION input)
 	{
 		next_ = input;
 	}
+}
+
+void Snake::moveTail (void)
+{
+	if (Snake::getLength() > max_length_)
+	{
+		int remove = speed_;
+		
+		for (auto it = body_.begin(); it != body_.end(); it++)
+		{
+			(*it) -> reduce(remove);
+			int length = (*it) -> getLength();
+			
+			if (length <= 0) {
+				remove += length;
+				body_.erase(it--);
+			}
+			else {
+				length = (*it) -> getLength();
+				if (length <= SQUARE) {
+					body_.erase(it--);
+				}			
+				
+				remove = 0;
+				break;
+			}
+		}
+		
+		if (remove > 0) {
+			int length = head_ -> getLength();
+			
+			if (length - remove < 300)
+				head_ -> reduce(length - 300);
+			else
+				head_ -> reduce(remove);
+		}
+	}
+}
+
+int Snake::getLength (void)
+{
+	if (head_ == nullptr)
+		return 0;
+
+	int length = head_ -> getLength();
+
+	for (auto it = body_.begin(); it != body_.end(); it++)
+	{
+		length += (*it) -> getLength();
+	}
+	
+	Log::add(length);
+	return length;
 }
 
 void Snake::draw (void) 

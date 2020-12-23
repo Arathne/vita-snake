@@ -15,6 +15,8 @@ class BodyUp : public Rectangle, public Body
 		void backward (Rectangle & tracker, float speed);
 		void draw (void);
 		void setColor (int r, int g, int b);
+		void reduce (float speed);
+		float getLength (void);
 };
 
 #endif

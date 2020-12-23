@@ -29,3 +29,14 @@ void BodyRight::setColor (int r, int g, int b)
 {
 	Rectangle::setColor(r, g, b);
 }
+
+void BodyRight::reduce (float speed)
+{
+	Rectangle::moveX(speed);
+	Rectangle::addWidth(-speed);
+}
+
+float BodyRight::getLength (void)
+{
+	return Rectangle::getWidth();
+}

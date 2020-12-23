@@ -31,3 +31,13 @@ void BodyUp::setColor (int r, int g, int b)
 {
 	Rectangle::setColor(r, g, b);
 }
+
+void BodyUp::reduce (float speed)
+{
+	Rectangle::addHeight(-speed);
+}
+
+float BodyUp::getLength (void)
+{
+	return Rectangle::getHeight();
+}

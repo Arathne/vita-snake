@@ -31,3 +31,13 @@ void BodyLeft::setColor (int r, int g, int b)
 {
 	Rectangle::setColor(r, g, b);
 }
+
+void BodyLeft::reduce (float speed)
+{
+	Rectangle::addWidth(-speed);
+}
+
+float BodyLeft::getLength (void)
+{
+	return Rectangle::getWidth();
+}

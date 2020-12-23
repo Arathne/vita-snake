@@ -29,3 +29,14 @@ void BodyDown::setColor (int r, int g, int b)
 {
 	Rectangle::setColor(r, g, b);
 }
+
+void BodyDown::reduce (float speed)
+{
+	Rectangle::moveY(speed);
+	Rectangle::addHeight(-speed);
+}
+
+float BodyDown::getLength (void)
+{
+	return Rectangle::getHeight();
+}

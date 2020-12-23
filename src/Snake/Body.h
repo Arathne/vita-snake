@@ -17,6 +17,8 @@ class Body
 		virtual void backward (Rectangle & tracker, float speed) = 0;
 		virtual void draw (void) = 0;
 		virtual void setColor (int r, int g, int b) = 0;
+		virtual void reduce (float speed) = 0;
+		virtual float getLength (void) = 0;
 };
 
 #endif

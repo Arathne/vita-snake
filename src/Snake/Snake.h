@@ -21,6 +21,8 @@ class Snake
 
 	private:
 		void changeHead (void);
+		void moveTail (void);
+		int getLength (void);
 
 		DIRECTION facing_;
 		DIRECTION next_;
@@ -32,6 +34,8 @@ class Snake
 		std::vector<Body*> body_;
 		float speed_;
 		int counter_;
+		bool tail_;
+		int max_length_;
 };
 
 #endif
