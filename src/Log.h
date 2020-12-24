@@ -10,20 +10,26 @@
 class Log
 {
 	public:
-		static void render (SDL_Renderer & renderer, int length);
+		~Log (void);
+
 		static void add (const int number);
 		static void add (const std::string message);
-		static void destroy (void);
-
+		static void setRenderer (SDL_Renderer & renderer);
 		static void draw (void);
 
 	private:
-		static void update (void);
-		static void checkLength (void);
-
-		static int render_;
-		static std::vector<std::string> log_;
-		static Text* text_;
+		Log (void);
+		
+		void setTextRenderer (SDL_Renderer & renderer);
+		void addText (const std::string message);
+		void drawText (void);
+		void update (void);
+		void checkLength (void);
+		
+		static Log instance_;
+		int render_;
+		std::vector<std::string> log_;
+		Text* text_;
 };
 
 #endif

@@ -2,17 +2,61 @@
 
 #define FONT_SIZE 14
 
-int Log::render_ = 0;
-std::vector<std::string> Log::log_;
-Text* Log::text_;
+Log Log::instance_;
 
-void Log::render (SDL_Renderer & renderer, int length)
+Log::Log (void):
+	render_(10),
+	text_(new Text[render_])
+{}
+
+Log::~Log (void) 
 {
-	render_ = length;
-	text_ = new Text[render_];
-	
-	int y = 0;
+	delete[] text_; 
+}
 
+/* STATIC */
+
+void Log::add (const int number)
+{
+	instance_.addText(std::to_string(number));
+}
+
+void Log::add (const std::string message)
+{
+	instance_.addText(message);
+}
+
+void Log::setRenderer (SDL_Renderer & renderer)
+{
+	instance_.setTextRenderer(renderer);
+}
+
+void Log::draw (void)
+{
+	instance_.drawText();
+}
+
+/* INSTANCE */
+
+void Log::addText (const std::string message)
+{
+	log_.push_back(message);
+	Log::checkLength();
+	Log::update();
+}
+
+void Log::drawText (void)
+{
+	for (int i = 0; i < render_; i++)
+	{
+		text_[i].draw();
+	}
+}
+
+void Log::setTextRenderer (SDL_Renderer & renderer)
+{
+	int y = 0;
+	
 	for (int i = 0; i < render_; i++)
 	{
 		Text* current = &(text_[i]);
@@ -21,23 +65,6 @@ void Log::render (SDL_Renderer & renderer, int length)
 		current -> setFont("app0:/assets/joystix.ttf", FONT_SIZE);
 		y += current -> getHeight();
 	}
-}
-
-void Log::destroy (void)
-{
-	delete[] text_;
-}
-
-void Log::add (const int number)
-{
-	Log::add(std::to_string(number));
-}
-
-void Log::add (const std::string message)
-{
-	log_.push_back(message);
-	Log::checkLength();
-	Log::update();
 }
 
 void Log::update (void)
@@ -54,13 +81,5 @@ void Log::checkLength (void)
 	if (log_.size() > render_)
 	{
 		log_.erase(log_.begin());
-	}
-}
-
-void Log::draw (void)
-{
-	for (int i = 0; i < render_; i++)
-	{
-		text_[i].draw();
 	}
 }
