@@ -17,7 +17,5 @@ int main()
 		StateManager::process();
 	}
 	
-	StateManager::destroy();
-
 	sceKernelExitProcess(0);
 }

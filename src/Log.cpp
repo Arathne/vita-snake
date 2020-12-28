@@ -5,7 +5,7 @@
 
 /* STATIC */
 
-Log Log::instance_;
+Log Log::instance;
 
 void Log::add (const int number)
 {
@@ -14,18 +14,18 @@ void Log::add (const int number)
 
 void Log::add (const std::string message)
 {
-	instance_.log_.push_back(message);
-	instance_.checkLength();
-	instance_.update();
+	instance.log_.push_back(message);
+	instance.checkLength();
+	instance.update();
 }
 
 void Log::setRenderer (SDL_Renderer & renderer)
 {
 	int y = 0;
 	
-	for (int i = 0; i < instance_.render_; i++)
+	for (int i = 0; i < instance.render_; i++)
 	{
-		Text* current = &(instance_.text_[i]);
+		Text* current = &(instance.text_[i]);
 		current -> setPositionY(y);
 		current -> setRenderer(renderer);
 		current -> setFont("app0:/assets/joystix.ttf", FONT_SIZE);
@@ -35,9 +35,9 @@ void Log::setRenderer (SDL_Renderer & renderer)
 
 void Log::draw (void)
 {
-	for (int i = 0; i < instance_.render_; i++)
+	for (int i = 0; i < instance.render_; i++)
 	{
-		instance_.text_[i].draw();
+		instance.text_[i].draw();
 	}
 }
 

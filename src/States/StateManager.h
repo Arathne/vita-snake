@@ -7,11 +7,15 @@
 class StateManager
 {
 	public:
-		static void destroy (void);
+		~StateManager (void);
+		
 		static void process (void);
 
 	private:
-		static Node* state_;
+		static StateManager instance;
+		StateManager (void);
+
+		Node* state_;
 };
 
 #endif

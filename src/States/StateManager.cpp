@@ -1,21 +1,26 @@
 #include "StateManager.h"
 
-Node* StateManager::state_ = nullptr;
+/* STATIC */
+StateManager StateManager::instance;
 
 void StateManager::process (void)
 {
-	if (state_ == nullptr)
-		state_ = new Menu();
+	if (instance.state_ == nullptr)
+		instance.state_ = new Menu();
 
-	Node* current = state_;
-	state_ = current -> process();
+	Node* current = instance.state_;
+	instance.state_ = current -> process();
 
-	if (current != state_)
+	if (current != instance.state_)
 		delete current;
 }
 
-void StateManager::destroy (void)
+/* INSTANCE */
+
+StateManager::StateManager (void) {}
+
+StateManager::~StateManager (void)
 {
-	if (state_ != nullptr)
-		delete state_;
+	if (instance.state_ != nullptr)
+		delete instance.state_;
 }

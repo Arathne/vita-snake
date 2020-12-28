@@ -23,7 +23,7 @@ class Log
 		void update (void);
 		void checkLength (void);
 		
-		static Log instance_;
+		static Log instance;
 		int render_;
 		std::vector<std::string> log_;
 		Text* text_;
