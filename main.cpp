@@ -7,7 +7,6 @@
 
 int main()
 {
-	GameRenderer::init();
 	Log::setRenderer(GameRenderer::getRenderer());
 	Log::add("initialized");
 	Input::mode(SCE_CTRL_MODE_DIGITAL);
@@ -20,7 +19,6 @@ int main()
 	}
 	
 	StateManager::destroy();
-	GameRenderer::destroy();
 
 	sceKernelExitProcess(0);
 }

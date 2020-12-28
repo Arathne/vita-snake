@@ -9,8 +9,8 @@
 class GameRenderer
 {
 	public:
-		static void init (void);
-		static void destroy (void);
+		~GameRenderer (void);
+		
 		static void clear (void);
 		static void present (void);
 		
@@ -20,8 +20,11 @@ class GameRenderer
 		static SDL_Renderer & getRenderer (void);
 		
 	private:
-		static SDL_Window* window_;
-		static SDL_Renderer* renderer_;
+		static GameRenderer instance;
+		GameRenderer (void);
+		
+		SDL_Window* window_;
+		SDL_Renderer* renderer_;
 };
 
 #endif
