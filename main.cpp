@@ -8,8 +8,7 @@
 int main()
 {
 	Log::setRenderer(GameRenderer::getRenderer());
-	Log::add("initialized");
-	Input::mode(SCE_CTRL_MODE_DIGITAL);
+	Log::add("Initialized");
 
 	bool run = true;
 	while (run)

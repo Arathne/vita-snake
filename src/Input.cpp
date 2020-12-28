@@ -1,22 +1,18 @@
 #include "Input.h"
 
-SceCtrlData Input::previous_;
-SceCtrlData Input::data_;
+/* STATIC */
 
-void Input::mode (SceCtrlPadInputMode mode)
-{
-	sceCtrlSetSamplingMode(mode);
-}
+Input Input::instance;
 
 void Input::poll (void)
 {
-	previous_ = data_;
-	sceCtrlPeekBufferPositive(0, &data_, 1);	
+	instance.previous_ = instance.data_;
+	sceCtrlPeekBufferPositive(0, &instance.data_, 1);	
 }
 
 bool Input::active (SceCtrlButtons button)
 {
-	if (data_.buttons == button)
+	if (instance.data_.buttons == button)
 		return true;
 
 	return false;
@@ -24,7 +20,7 @@ bool Input::active (SceCtrlButtons button)
 
 bool Input::began (SceCtrlButtons button)
 {
-	if (data_.buttons == button && !(previous_.buttons == button))
+	if (instance.data_.buttons == button && !(instance.previous_.buttons == button))
 		return true;
 
 	return false;
@@ -32,8 +28,17 @@ bool Input::began (SceCtrlButtons button)
 
 bool Input::ended (SceCtrlButtons button)
 {
-	if (!(data_.buttons == button) && previous_.buttons == button)
+	if (!(instance.data_.buttons == button) && instance.previous_.buttons == button)
 		return true;
 
 	return false;
 }
+
+/* INSTANCE */
+
+Input::Input (void)
+{
+	sceCtrlSetSamplingMode(SCE_CTRL_MODE_DIGITAL);
+}
+
+Input::~Input (void) {}

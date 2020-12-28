@@ -6,7 +6,8 @@
 class Input
 {
 	public:
-		static void mode (SceCtrlPadInputMode mode);
+		~Input (void);		
+
 		static void poll (void);
 		
 		static bool active (SceCtrlButtons button);
@@ -14,8 +15,11 @@ class Input
 		static bool ended (SceCtrlButtons button);
 
 	private:
-		static SceCtrlData previous_;
-		static SceCtrlData data_;
+		static Input instance;
+		Input (void);
+
+		SceCtrlData previous_;
+		SceCtrlData data_;
 };
 
 #endif
