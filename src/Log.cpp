@@ -1,70 +1,56 @@
 #include "Log.h"
 
 #define FONT_SIZE 14
+#define LOG_SIZE 10
+
+/* STATIC */
 
 Log Log::instance_;
 
+void Log::add (const int number)
+{
+	Log::add(std::to_string(number));
+}
+
+void Log::add (const std::string message)
+{
+	instance_.log_.push_back(message);
+	instance_.checkLength();
+	instance_.update();
+}
+
+void Log::setRenderer (SDL_Renderer & renderer)
+{
+	int y = 0;
+	
+	for (int i = 0; i < instance_.render_; i++)
+	{
+		Text* current = &(instance_.text_[i]);
+		current -> setPositionY(y);
+		current -> setRenderer(renderer);
+		current -> setFont("app0:/assets/joystix.ttf", FONT_SIZE);
+		y += current -> getHeight();
+	}
+}
+
+void Log::draw (void)
+{
+	for (int i = 0; i < instance_.render_; i++)
+	{
+		instance_.text_[i].draw();
+	}
+}
+
+/* INSTANCE */
+
 Log::Log (void):
-	render_(10),
+	render_(LOG_SIZE),
 	text_(new Text[render_])
 {}
 
 Log::~Log (void) 
 {
 	delete[] text_; 
-}
-
-/* STATIC */
-
-void Log::add (const int number)
-{
-	instance_.addText(std::to_string(number));
-}
-
-void Log::add (const std::string message)
-{
-	instance_.addText(message);
-}
-
-void Log::setRenderer (SDL_Renderer & renderer)
-{
-	instance_.setTextRenderer(renderer);
-}
-
-void Log::draw (void)
-{
-	instance_.drawText();
-}
-
-/* INSTANCE */
-
-void Log::addText (const std::string message)
-{
-	log_.push_back(message);
-	Log::checkLength();
-	Log::update();
-}
-
-void Log::drawText (void)
-{
-	for (int i = 0; i < render_; i++)
-	{
-		text_[i].draw();
-	}
-}
-
-void Log::setTextRenderer (SDL_Renderer & renderer)
-{
-	int y = 0;
-	
-	for (int i = 0; i < render_; i++)
-	{
-		Text* current = &(text_[i]);
-		current -> setPositionY(y);
-		current -> setRenderer(renderer);
-		current -> setFont("app0:/assets/joystix.ttf", FONT_SIZE);
-		y += current -> getHeight();
-	}
 }
 
 void Log::update (void)

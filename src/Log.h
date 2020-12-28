@@ -20,9 +20,6 @@ class Log
 	private:
 		Log (void);
 		
-		void setTextRenderer (SDL_Renderer & renderer);
-		void addText (const std::string message);
-		void drawText (void);
 		void update (void);
 		void checkLength (void);
 		
