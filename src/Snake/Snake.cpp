@@ -14,11 +14,6 @@ Snake::Snake (void):
 	max_length_(300)
 {
 	tracker_.setColor(255, 0, 0);
-	
-	for (int i = 0; i < 7; i++) // prevent lag spikes when starting
-	{
-		Log::add("-");
-	}
 }
 
 Snake::~Snake (void) 
@@ -128,7 +123,6 @@ int Snake::getLength (void)
 		length += (*it) -> getLength();
 	}
 	
-	Log::add(length);
 	return length;
 }
 

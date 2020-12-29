@@ -9,15 +9,13 @@ class Input
 		~Input (void);		
 
 		static void poll (void);
-		
-		static bool active (SceCtrlButtons button);
 		static bool began (SceCtrlButtons button);
 		static bool ended (SceCtrlButtons button);
 
 	private:
-		static Input instance;
 		Input (void);
-
+		
+		static Input instance;
 		SceCtrlData previous_;
 		SceCtrlData data_;
 };

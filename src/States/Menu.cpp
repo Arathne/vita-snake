@@ -13,8 +13,6 @@ Menu::Menu (void):
 	play_.setPosition( (960/2)-(play_.getWidth()/2), title_.getPositionY() + title_.getHeight() + SPACING );
 	options_.setPosition( (960/2)-(options_.getWidth()/2), play_.getPositionY() + play_.getHeight() + SPACING );
 	highscores_.setPosition( (960/2)-(highscores_.getWidth()/2), options_.getPositionY() + options_.getHeight() + SPACING );
-	
-	Log::add("STATE :: MENU");
 }
 
 Menu::~Menu (void) {}
@@ -29,7 +27,6 @@ Node* Menu::process (void)
 	
 	title_.draw();
 	Menu::drawOptions();
-	Log::draw();
 
 	GameRenderer::present();
 	

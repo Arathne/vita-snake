@@ -1,7 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include "../Log.h"
+#include <iostream>
+
 #include "../Input.h"
 
 class Node

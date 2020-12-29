@@ -1,9 +1,6 @@
 #include "Game.h"
 
-Game::Game (void)
-{
-	Log::add("STATE :: GAME");
-}
+Game::Game (void) {}
 
 Game::~Game (void) {}
 
@@ -14,7 +11,6 @@ Node* Game::process (void)
 
 	GameRenderer::clear();
 	snake_.draw();
-	Log::draw();
 	GameRenderer::present();
 	
 	return this;
@@ -22,12 +18,12 @@ Node* Game::process (void)
 
 void Game::input (void)
 {	
-	if (Input::active(SCE_CTRL_UP))
+	if (Input::began(SCE_CTRL_UP))
 		snake_.direction(UP);
-	else if (Input::active(SCE_CTRL_DOWN))
+	else if (Input::began(SCE_CTRL_DOWN))
 		snake_.direction(DOWN);
-	else if (Input::active(SCE_CTRL_LEFT))
+	else if (Input::began(SCE_CTRL_LEFT))
 		snake_.direction(LEFT);
-	else if (Input::active(SCE_CTRL_RIGHT))
+	else if (Input::began(SCE_CTRL_RIGHT))
 		snake_.direction(RIGHT);
 }

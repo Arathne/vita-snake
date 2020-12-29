@@ -3,7 +3,6 @@ set( CPP
 	src/Color.cpp
 	src/Text.cpp
 	src/GameRenderer.cpp
-	src/Log.cpp
 	src/Input.cpp
 	src/Rectangle.cpp
 	src/Snake/Snake.cpp

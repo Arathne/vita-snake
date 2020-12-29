@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "../Rectangle.h"
-#include "../Log.h"
 
 #include "DirectionEnum.h"
 #include "BodyFactory.h"

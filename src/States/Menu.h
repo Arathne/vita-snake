@@ -3,6 +3,7 @@
 
 #include "Node.h"
 #include "Game.h"
+#include "../Text.h"
 
 class Menu : public Node
 {

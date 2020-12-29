@@ -12,9 +12,9 @@ class StateManager
 		static void process (void);
 
 	private:
-		static StateManager instance;
 		StateManager (void);
-
+		
+		static StateManager instance;
 		Node* state_;
 };
 

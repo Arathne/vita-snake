@@ -42,6 +42,7 @@ target_link_libraries(${PROJECT_NAME}
   SceAppUtil_stub
   ScePgf_stub
   ScePvf_stub
+  SceMotion_stub
   freetype
   png
   stdc++
