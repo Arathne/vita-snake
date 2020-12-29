@@ -25,9 +25,7 @@ include(path.cmake)
 add_executable( ${PROJECT_NAME} ${CPP} )
 
 target_link_libraries(${PROJECT_NAME}
-  glm::glm
   SDL2
-  SDL2_image
   SDL2_ttf
   vita2d
   SceDisplay_stub
@@ -40,13 +38,11 @@ target_link_libraries(${PROJECT_NAME}
   SceTouch_stub
   SceHid_stub
   SceAppUtil_stub
-  ScePgf_stub
-  ScePvf_stub
   SceMotion_stub
   freetype
-  png
   stdc++
   pthread
+  png
   m
   z
 )
