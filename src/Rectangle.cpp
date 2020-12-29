@@ -26,7 +26,8 @@ Rectangle::~Rectangle (void) {}
 		
 void Rectangle::setPosition (float x, float y)
 {
-	position_ = glm::vec2(0, 0);
+	position_.x = x;
+	position_.y = y;
 }
 
 void Rectangle::setPositionX (float x)

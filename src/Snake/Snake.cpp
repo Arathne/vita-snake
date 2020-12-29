@@ -135,6 +135,6 @@ void Snake::draw (void)
 	
 	if (head_ != nullptr)
 		head_ -> draw();
-	
+
 	tracker_.draw();
 }

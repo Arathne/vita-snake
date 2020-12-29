@@ -5,6 +5,7 @@ set( CPP
 	src/GameRenderer.cpp
 	src/Input.cpp
 	src/Rectangle.cpp
+	src/Food.cpp
 	src/Snake/Snake.cpp
 	src/Snake/BodyRight.cpp
 	src/Snake/BodyLeft.cpp

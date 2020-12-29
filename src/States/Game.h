@@ -3,6 +3,7 @@
 
 #include "Node.h"
 #include "../Snake/Snake.h"
+#include "../Food.h"
 
 class Game : public Node
 {
@@ -16,6 +17,7 @@ class Game : public Node
 		void input (void);
 		
 		Snake snake_;
+		Food food_;
 };
 
 #endif

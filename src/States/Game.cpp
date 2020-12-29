@@ -1,6 +1,9 @@
 #include "Game.h"
 
-Game::Game (void) {}
+Game::Game (void) 
+{
+	std::cout << "STATE :: GAME" << std::endl;
+}
 
 Game::~Game (void) {}
 
@@ -10,6 +13,7 @@ Node* Game::process (void)
 	snake_.update();
 
 	GameRenderer::clear();
+	food_.draw();
 	snake_.draw();
 	GameRenderer::present();
 	
