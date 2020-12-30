@@ -24,12 +24,8 @@ void Food::respawn (void)
 	int randX = rand() % (MAX_X-(-MAX_X)+1) + (-MAX_X);
 	int randY = rand() % (MAX_Y-(-MAX_Y)+1) + (-MAX_Y);
 	
-	std::cout << randX << " " << randY << std::endl;
-
 	float x = CENTER_X + (SQUARE * randX) + (GAP * randX);
 	float y = CENTER_Y + (SQUARE * randY) + (GAP * randY);
-	
-	std::cout << x << " " << y << std::endl;
 	
 	square_.setPosition(x, y);
 }
@@ -37,4 +33,9 @@ void Food::respawn (void)
 void Food::draw (void)
 {
 	square_.draw();
+}
+
+const Rectangle & Food::getRectangle (void) const
+{
+	return square_;
 }

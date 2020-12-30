@@ -40,3 +40,23 @@ float BodyDown::getLength (void)
 {
 	return Rectangle::getHeight();
 }
+
+float BodyDown::getPositionX (void) const
+{
+	return Rectangle::getPositionX();
+}
+
+float BodyDown::getPositionY (void) const
+{
+	return Rectangle::getPositionY();
+}
+
+int BodyDown::getWidth (void) const
+{
+	return Rectangle::getWidth();
+}
+
+int BodyDown::getHeight (void) const
+{
+	return Rectangle::getHeight();
+}

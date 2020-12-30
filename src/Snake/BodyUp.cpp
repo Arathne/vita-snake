@@ -41,3 +41,23 @@ float BodyUp::getLength (void)
 {
 	return Rectangle::getHeight();
 }
+
+float BodyUp::getPositionX (void) const
+{
+	return Rectangle::getPositionX();
+}
+
+float BodyUp::getPositionY (void) const
+{
+	return Rectangle::getPositionY();
+}
+
+int BodyUp::getWidth (void) const
+{
+	return Rectangle::getWidth();
+}
+
+int BodyUp::getHeight (void) const
+{
+	return Rectangle::getHeight();
+}

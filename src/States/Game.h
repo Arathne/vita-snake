@@ -3,6 +3,7 @@
 
 #include "Node.h"
 #include "../Snake/Snake.h"
+#include "../Collision.h"
 #include "../Food.h"
 
 class Game : public Node
@@ -18,6 +19,7 @@ class Game : public Node
 		
 		Snake snake_;
 		Food food_;
+		Collision collision_;
 };
 
 #endif

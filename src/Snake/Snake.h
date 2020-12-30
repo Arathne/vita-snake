@@ -17,11 +17,15 @@ class Snake
 		void update (void);
 		void direction (DIRECTION input);
 		void draw (void);
+			
+		bool collided (const Rectangle & rectangle) const;
+		void grow (void);
 
 	private:
 		void changeHead (void);
 		void moveTail (void);
 		int getLength (void);
+		bool collided (const Body & body, const Rectangle & rect) const;
 
 		DIRECTION facing_;
 		DIRECTION next_;

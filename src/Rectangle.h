@@ -1,8 +1,6 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include <glm/glm.hpp>
-
 #include "Color.h"
 #include "GameRenderer.h"
 
@@ -18,12 +16,8 @@ class Rectangle
 		void setPositionX (float x);
 		void setPositionY (float y);
 
-		glm::vec2 getPosition (void) const;
 		float getPositionX (void) const;
 		float getPositionY (void) const;
-		
-		void addPositionX (float x);
-		void addPositionY (float y);
 
 		void move (float x, float y); // movement
 		void moveX (float x);
@@ -36,7 +30,6 @@ class Rectangle
 		void addWidth (int w);
 		void addHeight (int h);
 
-		glm::vec2 getSize (void) const;
 		int getWidth (void) const;
 		int getHeight (void) const;
 		
@@ -49,7 +42,8 @@ class Rectangle
 		const Rectangle & operator = (const Rectangle & rhs);
 
 	private:
-		glm::vec2 position_;
+		float x_;
+		float y_;
 		int width_;
 		int height_;
 		Color color_;

@@ -11,7 +11,7 @@ Snake::Snake (void):
 	speed_(4),
 	counter_(0),
 	tail_(false),
-	max_length_(300)
+	max_length_(100)
 {
 	tracker_.setColor(255, 0, 0);
 }
@@ -103,8 +103,8 @@ void Snake::moveTail (void)
 		if (remove > 0) {
 			int length = head_ -> getLength();
 			
-			if (length - remove < 300)
-				head_ -> reduce(length - 300);
+			if (length - remove < max_length_)
+				head_ -> reduce(length - max_length_);
 			else
 				head_ -> reduce(remove);
 		}
@@ -137,4 +137,44 @@ void Snake::draw (void)
 		head_ -> draw();
 
 	tracker_.draw();
+}
+
+bool Snake::collided (const Rectangle & rectangle) const
+{
+	if (head_ == nullptr)
+		return false;
+	
+	if (Snake::collided(*head_, rectangle))
+	{
+		return true;
+	}
+	else
+	{
+		for (auto it = body_.begin(); it != body_.end(); it++)
+		{
+			if (Snake::collided( (**it), rectangle ))
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+bool Snake::collided (const Body & body, const Rectangle & rect) const
+{
+	if (rect.getPositionX() < body.getPositionX() || rect.getPositionX() > body.getPositionX() + body.getWidth() ) {
+		return false;
+	}
+	if (rect.getPositionY() < body.getPositionY() || rect.getPositionY() > body.getPositionY() + body.getHeight() ) {
+		return false;
+	}
+
+	return true;
+}
+
+void Snake::grow (void)
+{
+	max_length_ += 50;
 }

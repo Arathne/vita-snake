@@ -14,9 +14,11 @@ class Food
 	public:
 		Food (void);
 		~Food (void);
-		
+
 		void respawn (void);
 		void draw (void);	
+		
+		const Rectangle & getRectangle (void) const;
 
 	private:
 		Rectangle square_;

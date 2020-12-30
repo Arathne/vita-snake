@@ -17,6 +17,11 @@ class BodyUp : public Rectangle, public Body
 		void setColor (int r, int g, int b);
 		void reduce (float speed);
 		float getLength (void);
+		
+		float getPositionX (void) const;
+		float getPositionY (void) const;
+		int getWidth (void) const;
+		int getHeight (void) const;
 };
 
 #endif

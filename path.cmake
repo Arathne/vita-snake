@@ -6,6 +6,7 @@ set( CPP
 	src/Input.cpp
 	src/Rectangle.cpp
 	src/Food.cpp
+	src/Collision.cpp
 	src/Snake/Snake.cpp
 	src/Snake/BodyRight.cpp
 	src/Snake/BodyLeft.cpp

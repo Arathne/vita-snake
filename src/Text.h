@@ -4,7 +4,6 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include <glm/glm.hpp>
 
 #include "GameRenderer.h"
 #include "Color.h"
@@ -30,7 +29,6 @@ class Text
 		void setColor (int red, int green, int blue, int alpha);
 
 		const char* getContent (void) const;
-		glm::vec2 getPosition (void) const;
 		SDL_Texture & getTexture (void) const;
 		int getPositionX (void);
 		int getPositionY (void);
@@ -47,7 +45,8 @@ class Text
 		const char* path_;
 		int fontSize_;
 		
-		glm::vec2 position_;
+		int x_;
+		int y_;
 		int width_;
 		int height_;
 		

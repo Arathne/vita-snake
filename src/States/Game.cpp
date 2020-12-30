@@ -1,6 +1,7 @@
 #include "Game.h"
 
-Game::Game (void) 
+Game::Game (void):
+	collision_(Collision(food_, snake_))
 {
 	std::cout << "STATE :: GAME" << std::endl;
 }
@@ -17,6 +18,8 @@ Node* Game::process (void)
 	snake_.draw();
 	GameRenderer::present();
 	
+	collision_.check();
+
 	return this;
 }
 

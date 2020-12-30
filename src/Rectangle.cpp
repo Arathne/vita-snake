@@ -1,14 +1,16 @@
 #include "Rectangle.h"
 
 Rectangle::Rectangle (void):
-	position_(glm::vec2(0.0, 0.0)),
+	x_(0.0),
+	y_(0.0),
 	width_(0),
 	height_(0),
 	color_(Color::make(0, 255, 0, 255))
 {}
 
 Rectangle::Rectangle (float x, float y, int w, int h):
-	position_(glm::vec2(x, y)),
+	x_(x),
+	y_(y),
 	width_(w),
 	height_(h),
 	color_(Color::make(0, 255, 0, 255))
@@ -16,7 +18,8 @@ Rectangle::Rectangle (float x, float y, int w, int h):
 
 Rectangle::Rectangle (const Rectangle & rhs)
 {
-	position_ = rhs.position_;
+	x_ = rhs.x_;
+	y_ = rhs.y_;
 	width_ = rhs.width_;
 	height_ = rhs.height_;
 	color_ = rhs.color_;
@@ -26,43 +29,28 @@ Rectangle::~Rectangle (void) {}
 		
 void Rectangle::setPosition (float x, float y)
 {
-	position_.x = x;
-	position_.y = y;
+	x_ = x;
+	y_ = y;
 }
 
 void Rectangle::setPositionX (float x)
 {
-	position_.x = x;
+	x_ = x;
 }
 
 void Rectangle::setPositionY (float y)
 {
-	position_.y = y;
-}
-
-void Rectangle::addPositionX (float x)
-{
-	position_.x += x;
-}
-
-void Rectangle::addPositionY (float y)
-{
-	position_.y += y;
-}
-
-glm::vec2 Rectangle::getPosition (void) const
-{
-	return position_;
+	y_ = y;
 }
 
 float Rectangle::getPositionX (void) const
 {
-	return position_.x;
+	return x_;
 }
 
 float Rectangle::getPositionY (void) const
 {
-	return position_.y;
+	return y_;
 }
 
 void Rectangle::setSize (int w, int h)
@@ -79,11 +67,6 @@ void Rectangle::setWidth (int w)
 void Rectangle::setHeight (int h)
 {
 	height_ = h;
-}
-
-glm::vec2 Rectangle::getSize (void) const
-{
-	return glm::vec2(width_, height_);
 }
 
 int Rectangle::getWidth (void) const
@@ -129,24 +112,25 @@ void Rectangle::move (float x, float y)
 
 void Rectangle::moveX (float x)
 {
-	position_.x = position_.x + x;
+	x_ += x;
 }
 
 void Rectangle::moveY (float y)
 {
-	position_.y = position_.y + y;
+	y_ += y;
 }
 
 void Rectangle::draw (void)
 {
-	GameRenderer::draw(position_.x, position_.y, width_, height_, color_);	
+	GameRenderer::draw(x_, y_, width_, height_, color_);	
 }
 
 const Rectangle & Rectangle::operator = (const Rectangle & rhs)
 {
 	if (&rhs != &(*this))
 	{
-		position_ = rhs.position_;
+		x_ = rhs.x_;
+		y_ = rhs.y_;
 		width_ = rhs.width_;
 		height_ = rhs.height_;
 		color_ = rhs.color_;

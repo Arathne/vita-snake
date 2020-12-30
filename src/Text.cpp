@@ -6,7 +6,8 @@ Text::Text (void):
 	content_("-"),
 	path_(""),
 	fontSize_(0),
-	position_(glm::vec2((int) 0, (int) 0)),
+	x_(0),
+	y_(0),
 	font_(nullptr),
 	texture_(nullptr),
 	renderer_(nullptr)
@@ -16,7 +17,8 @@ Text::Text (const char* content, const char* path, int fontSize, SDL_Renderer & 
 	content_(content),
 	path_(path),
 	fontSize_(fontSize),
-	position_(glm::vec2((int) 0, (int) 0)),
+	x_(0),
+	y_(0),
 	font_(TTF_OpenFont(path, fontSize)),
 	texture_(nullptr),
 	renderer_(&renderer)
@@ -28,7 +30,8 @@ Text::Text (int x, int y, const char* content, const char* path, int fontSize, S
 	content_(content),
 	path_(path),
 	fontSize_(fontSize),
-	position_(glm::vec2((int) x, (int) y)),
+	x_(x),
+	y_(y),
 	font_(TTF_OpenFont(path, fontSize)),
 	texture_(nullptr),
 	renderer_(&renderer)
@@ -40,7 +43,8 @@ Text::Text (const Text & rhs):
 	content_(rhs.content_),
 	path_(rhs.path_),
 	fontSize_(rhs.fontSize_),
-	position_(rhs.position_),
+	x_(rhs.x_),
+	y_(rhs.y_),
 	width_(rhs.width_),
 	height_(rhs.height_),
 	font_(rhs.font_),
@@ -80,17 +84,18 @@ void Text::setContent (int number)
 
 void Text::setPosition (int x, int y)
 {
-	position_ = glm::vec2(x, y);
+	x_ = x;
+	y_ = y;
 }
 
 void Text::setPositionX (int x)
 {
-	position_.x = x;
+	x_ = x;
 }
 
 void Text::setPositionY (int y)
 {
-	position_.y = y;
+	y_ = y;
 }
 
 void Text::setFont (const char* path, int fontSize)
@@ -118,11 +123,6 @@ const char* Text::getContent (void) const
 	return content_;
 }
 
-glm::vec2 Text::getPosition (void) const
-{
-	return position_;
-}
-
 SDL_Texture & Text::getTexture (void) const
 {
 	return *texture_;
@@ -130,12 +130,12 @@ SDL_Texture & Text::getTexture (void) const
 
 int Text::getPositionX (void)
 {
-	return position_.x;
+	return x_;
 }
 
 int Text::getPositionY (void)
 {
-	return position_.y;
+	return y_;
 }
 
 int Text::getWidth (void)
@@ -162,7 +162,8 @@ const Text & Text::operator = (const Text & rhs)
 		content_ = rhs.content_;
 		path_ = rhs.path_;
 		fontSize_ = rhs.fontSize_;
-		position_ = rhs.position_;
+		x_ = rhs.x_;
+		y_ = rhs.y_;
 		width_ = rhs.width_;
 		height_ = rhs.height_;
 		font_ = rhs.font_;
@@ -178,7 +179,7 @@ const Text & Text::operator = (const Text & rhs)
 
 void Text::draw (void)
 {
-	GameRenderer::draw(position_.x, position_.y, width_, height_, color_, *texture_);
+	GameRenderer::draw(x_, y_, width_, height_, color_, *texture_);
 }
 
 /* PRIVATE */
