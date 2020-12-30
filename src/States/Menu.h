@@ -22,7 +22,6 @@ class Menu : public Node
 		Text title_;
 		Text play_;
 		Text options_;
-		Text highscores_;
 };
 
 #endif
