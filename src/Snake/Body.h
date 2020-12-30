@@ -3,11 +3,6 @@
 
 #include "../Rectangle.h"
 
-/* NOTE: moving a body part of the snake is not as simple as changing x and y axis.
- *       width and height also need to be changed based on the direction it is going
- *       which is why polymorphism is used.
-*/
-
 class Body
 {
 	public:

@@ -195,6 +195,20 @@ bool Snake::collided (const Body & body, const Rectangle & rect) const
 	return true;
 }
 
+bool Snake::screenCollision (void) const
+{
+	if (facing_ == NONE)
+		return false;
+
+	float centerX = (tracker_.getPositionX() + (tracker_.getPositionX()+tracker_.getWidth())) / 2;
+	float centerY = (tracker_.getPositionY() + (tracker_.getPositionY()+tracker_.getHeight())) / 2;
+	
+	if ((centerX >= 0 && centerX <= 960) && (centerY >= 0 && centerY <= 544))
+		return false;
+
+	return true;
+}
+
 void Snake::grow (void)
 {
 	max_length_ += 50;

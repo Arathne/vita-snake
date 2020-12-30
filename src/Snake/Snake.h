@@ -20,6 +20,8 @@ class Snake
 			
 		bool collided (void) const;
 		bool collided (const Rectangle & rectangle) const;
+		bool screenCollision (void) const;
+
 		void grow (void);
 
 	private:

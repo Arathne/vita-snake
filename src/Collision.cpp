@@ -27,5 +27,8 @@ void Collision::food (void)
 
 bool Collision::gameOver (void)
 {
-	return snake_ -> collided();
+	if (snake_ -> collided() || snake_ -> screenCollision())
+		return true;
+	
+	return false;
 }
