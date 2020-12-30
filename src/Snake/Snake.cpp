@@ -182,10 +182,13 @@ bool Snake::collided (const Rectangle & rectangle) const
 
 bool Snake::collided (const Body & body, const Rectangle & rect) const
 {
-	if (rect.getPositionX() < body.getPositionX() || rect.getPositionX() > body.getPositionX() + body.getWidth() ) {
+	float centerX = (rect.getPositionX() + (rect.getPositionX()+rect.getWidth())) / 2;
+	float centerY = (rect.getPositionY() + (rect.getPositionY()+rect.getHeight())) / 2;
+
+	if (centerX < body.getPositionX() || centerX > body.getPositionX() + body.getWidth() ) {
 		return false;
 	}
-	if (rect.getPositionY() < body.getPositionY() || rect.getPositionY() > body.getPositionY() + body.getHeight() ) {
+	if (centerY < body.getPositionY() || centerY > body.getPositionY() + body.getHeight() ) {
 		return false;
 	}
 
