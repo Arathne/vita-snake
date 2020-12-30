@@ -1,5 +1,7 @@
 #include "Snake.h"
 
+#include <iostream>
+
 #define SQUARE 32
 #define GAP 3
 
@@ -137,6 +139,22 @@ void Snake::draw (void)
 		head_ -> draw();
 
 	tracker_.draw();
+}
+
+bool Snake::collided (void) const
+{
+	if (head_ == nullptr || facing_ == NONE)
+		return false;
+
+	for (auto it = body_.begin(); it != body_.end() && it != body_.end()-1; it++)
+	{
+		if (Snake::collided( (**it), tracker_ ))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool Snake::collided (const Rectangle & rectangle) const

@@ -6,8 +6,7 @@
 
 int main()
 {
-	bool run = true;
-	while (run)
+	while (true)
 	{
 		Input::poll();
 		StateManager::process();

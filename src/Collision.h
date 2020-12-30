@@ -10,11 +10,12 @@ class Collision
 		Collision (Food & food, Snake & snake);
 		~Collision (void);
 		
-		void check (void);
+		void food (void);
+		bool gameOver (void);
 
 	private:
 		Collision (void);
-
+		
 		Food* food_;
 		Snake* snake_;
 };

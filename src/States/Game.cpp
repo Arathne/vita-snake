@@ -18,7 +18,10 @@ Node* Game::process (void)
 	snake_.draw();
 	GameRenderer::present();
 	
-	collision_.check();
+	collision_.food();
+
+	if (collision_.gameOver())
+		return nullptr;	
 
 	return this;
 }

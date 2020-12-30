@@ -9,7 +9,7 @@ Collision::Collision (void) {}
 
 Collision::~Collision (void) {}
 
-void Collision::check (void)
+void Collision::food (void)
 {
 	bool foodEaten = false;
 
@@ -23,4 +23,9 @@ void Collision::check (void)
 	{
 		snake_ -> grow();
 	}		
+}
+
+bool Collision::gameOver (void)
+{
+	return snake_ -> collided();
 }

@@ -18,6 +18,7 @@ class Snake
 		void direction (DIRECTION input);
 		void draw (void);
 			
+		bool collided (void) const;
 		bool collided (const Rectangle & rectangle) const;
 		void grow (void);
 
