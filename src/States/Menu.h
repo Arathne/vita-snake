@@ -4,6 +4,7 @@
 #include "Node.h"
 #include "Game.h"
 #include "../Text.h"
+#include "../UI/Selector.h"
 
 class Menu : public Node
 {
@@ -15,13 +16,11 @@ class Menu : public Node
 	
 	private:
 		void input (void);
-		void drawOptions (void);
+		void draw (void);
 
 		int selected_;
-		
 		Text title_;
-		Text play_;
-		Text options_;
+		std::vector<Option*> options_;
 };
 
 #endif

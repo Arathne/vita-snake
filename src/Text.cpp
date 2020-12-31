@@ -98,6 +98,22 @@ void Text::setPositionY (int y)
 	y_ = y;
 }
 
+void Text::move (int x, int y)
+{
+	x_ += x;
+	y_ += y;
+}
+
+void Text::moveX (int x)
+{
+	x_ += x;
+}
+
+void Text::moveY (int y)
+{
+	y_ += y;
+}
+
 void Text::setFont (const char* path, int fontSize)
 {
 	if (font_ != nullptr)

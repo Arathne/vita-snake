@@ -17,4 +17,5 @@ set( CPP
 	src/States/StateManager.cpp
 	src/States/Menu.cpp
 	src/States/Game.cpp
+	src/UI/Selector.cpp
 )

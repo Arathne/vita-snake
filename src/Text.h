@@ -24,6 +24,9 @@ class Text
 		void setPosition (int x, int y);
 		void setPositionX (int x);
 		void setPositionY (int y);
+		void move (int x, int y);
+		void moveX (int x);
+		void moveY (int y);
 		void setFont (const char* path, int fontSize);
 		void setRenderer (SDL_Renderer & renderer);
 		void setColor (int red, int green, int blue, int alpha);

@@ -1,20 +1,30 @@
 #include "Menu.h"
 
-#define SPACING 50
+#define SPACING 60
+#define CENTER_X 960/2
+#define CENTER_Y 544/2
 
 Menu::Menu (void):
 	selected_(0),
-	title_(Text("SNAKE", "app0:/assets/joystix.ttf", 100, GameRenderer::getRenderer())),
-	play_(Text("PLAY", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer())),
-	options_(Text("OPTIONS", "app0:/assets/joystix.ttf", 30, GameRenderer::getRenderer()))
+	title_(Text(CENTER_X, 40, "SNAKE", "app0:/assets/joystix.ttf", 110, GameRenderer::getRenderer()))
 {
-	title_.setPosition( (960/2)-(title_.getWidth()/2), SPACING );
-	play_.setPosition( (960/2)-(play_.getWidth()/2), title_.getPositionY() + title_.getHeight() + SPACING );
-	options_.setPosition( (960/2)-(options_.getWidth()/2), play_.getPositionY() + play_.getHeight() + SPACING );
+	title_.moveX(-(title_.getWidth()/2));
+	title_.setColor(0, 255, 0, 255);
+
+	options_.push_back(new Selector(CENTER_X, 250, "PLAY", 40, *((Node*) new Game()) ));
+	options_.push_back(new Selector(CENTER_X, 250+SPACING, "OPTIONS", 40, *((Node*) this)));
+	options_.at(selected_) -> hover();
+
 	std::cout << "STATE :: MENU" << std::endl;
 }
 
-Menu::~Menu (void) {}
+Menu::~Menu (void) 
+{
+	for (auto it = options_.begin(); it != options_.end(); it++)
+	{
+		delete *it;
+	}
+}
 
 Node* Menu::process (void)
 {
@@ -23,16 +33,12 @@ Node* Menu::process (void)
 	Menu::input();
 
 	GameRenderer::clear();
-	
-	title_.draw();
-	Menu::drawOptions();
-
+	Menu::draw();
 	GameRenderer::present();
 	
 	if (Input::began(SCE_CTRL_CROSS)) 
 	{
-		if (selected_ == 0)
-			nextState = new Game();
+		nextState = &options_.at(selected_) -> select();
 	}
 
 	return nextState;
@@ -40,22 +46,24 @@ Node* Menu::process (void)
 
 void Menu::input (void)
 {
-	if (Input::began(SCE_CTRL_UP) && selected_ > 0)
+	if (Input::began(SCE_CTRL_UP) && selected_ > 0) {
+		options_.at(selected_) -> unhover();
 		selected_--;
-	else if (Input::began(SCE_CTRL_DOWN) && selected_ < 1)
+		options_.at(selected_) -> hover();
+	}
+	else if (Input::began(SCE_CTRL_DOWN) && selected_ < options_.size()-1) {
+		options_.at(selected_) -> unhover();
 		selected_++;
+		options_.at(selected_) -> hover();
+	}
 }
 
-void Menu::drawOptions (void)
+void Menu::draw (void)
 {
-	play_.setColor(255, 255, 255, 255);
-	options_.setColor(255, 255, 255, 255);
+	title_.draw();
 	
-	if (selected_ == 0)
-		play_.setColor(255, 0, 0, 255);
-	else if (selected_ == 1)
-		options_.setColor(255, 0, 0, 255);
-	
-	play_.draw();
-	options_.draw();
+	for (auto it = options_.begin(); it != options_.end(); it++)
+	{
+		(*it) -> draw();
+	}
 }
