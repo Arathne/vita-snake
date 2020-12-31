@@ -198,6 +198,11 @@ void Text::draw (void)
 	GameRenderer::draw(x_, y_, width_, height_, color_, *texture_);
 }
 
+void Text::draw (double angle)
+{
+	GameRenderer::draw(x_, y_, width_, height_, color_, *texture_, angle);
+}
+
 /* PRIVATE */
 
 void Text::updateTexture (void)

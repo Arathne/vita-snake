@@ -13,6 +13,7 @@ class Game : public Node
 		~Game (void);
 
 		Node* process (void);
+		const char* getName (void) const;
 
 	private:
 		void input (void);

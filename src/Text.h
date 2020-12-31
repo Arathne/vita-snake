@@ -18,6 +18,7 @@ class Text
 		~Text (void);
 		
 		void draw (void);
+		void draw (double angle);
 
 		void setContent (const char* content);
 		void setContent (int number);

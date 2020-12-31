@@ -39,6 +39,22 @@ void GameRenderer::draw (int x, int y, int w, int h, Color color, SDL_Texture & 
 	SDL_RenderCopy( instance.renderer_, &texture, nullptr, &rectangle );
 }
 
+void GameRenderer::draw (int x, int y, int w, int h, Color color, SDL_Texture & texture, double angle )
+{
+	SDL_Rect rectangle;
+	rectangle.x = x;
+	rectangle.y = y;
+	rectangle.w = w;
+	rectangle.h = h;
+	
+	SDL_Point point;
+	point.x = 0;
+	point.y = 0;
+
+	SDL_SetTextureColorMod( &texture, color.red(), color.green(), color.blue() );
+	SDL_RenderCopyEx(instance.renderer_, &texture, nullptr, &rectangle, angle, &point, SDL_FLIP_NONE);
+}
+
 SDL_Renderer & GameRenderer::getRenderer (void)
 {
 	return *instance.renderer_;

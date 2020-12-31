@@ -9,7 +9,9 @@ class Node
 {
 	public:
 		virtual ~Node (void) {};
+		
 		virtual Node* process (void) = 0;
+		virtual const char* getName (void) const = 0;
 };
 
 #endif

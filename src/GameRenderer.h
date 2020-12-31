@@ -16,6 +16,7 @@ class GameRenderer
 		
 		static void draw (int x, int y, int w, int h, Color color);
 		static void draw (int x, int y, int w, int h, Color color, SDL_Texture & texture );
+		static void draw (int x, int y, int w, int h, Color color, SDL_Texture & texture, double angle );
 
 		static SDL_Renderer & getRenderer (void);
 		

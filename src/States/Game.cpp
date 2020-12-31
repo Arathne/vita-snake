@@ -2,9 +2,7 @@
 
 Game::Game (void):
 	collision_(Collision(food_, snake_))
-{
-	std::cout << "STATE :: GAME" << std::endl;
-}
+{}
 
 Game::~Game (void) {}
 
@@ -36,4 +34,9 @@ void Game::input (void)
 		snake_.direction(LEFT);
 	else if (Input::began(SCE_CTRL_RIGHT))
 		snake_.direction(RIGHT);
+}
+
+const char* Game::getName (void) const
+{
+	return "GAME";
 }

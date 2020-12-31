@@ -1,21 +1,29 @@
 #include "Menu.h"
 
+#define SNAKE_SIZE 32
+#define SNAKE_MARGIN 40
+#define SNAKE_LENGTH 300
+
 #define SPACING 60
 #define CENTER_X 960/2
 #define CENTER_Y 544/2
 
 Menu::Menu (void):
 	selected_(0),
-	title_(Text(CENTER_X, 40, "SNAKE", "app0:/assets/joystix.ttf", 110, GameRenderer::getRenderer()))
+	title_(Text(CENTER_X, 40, "SNAKE", "app0:/assets/joystix.ttf", 110, GameRenderer::getRenderer())),
+	snake_(new Snake(960-SNAKE_SIZE-SNAKE_MARGIN, -SNAKE_SIZE, SNAKE_LENGTH)),
+	signature_( Text(55, 544/2, "ARATHNE", "app0:/assets/joystix.ttf", 10, GameRenderer::getRenderer()))
 {
 	title_.moveX(-(title_.getWidth()/2));
-	title_.setColor(0, 255, 0, 255);
+	title_.setColor(150, 0, 255, 255);
+	
+	signature_.setColor(0, 0, 0, 255);
 
 	options_.push_back(new Selector(CENTER_X, 250, "PLAY", 40, *((Node*) new Game()) ));
 	options_.push_back(new Selector(CENTER_X, 250+SPACING, "OPTIONS", 40, *((Node*) this)));
 	options_.at(selected_) -> hover();
 
-	std::cout << "STATE :: MENU" << std::endl;
+	snake_ -> direction(DOWN);
 }
 
 Menu::~Menu (void) 
@@ -24,6 +32,8 @@ Menu::~Menu (void)
 	{
 		delete *it;
 	}
+
+	delete snake_;
 }
 
 Node* Menu::process (void)
@@ -31,6 +41,8 @@ Node* Menu::process (void)
 	Node* nextState = this;
 	
 	Menu::input();
+	
+	Menu::snake();
 
 	GameRenderer::clear();
 	Menu::draw();
@@ -58,12 +70,42 @@ void Menu::input (void)
 	}
 }
 
+void Menu::snake (void)
+{
+	int y = snake_ -> getPositionY();
+	std::cout << y << std::endl;
+
+	if (y >= 544 + SNAKE_LENGTH - SNAKE_SIZE) 
+	{
+		std::cout << "CHANGING DIRECTION" << std::endl;
+		delete snake_;
+		snake_ = new Snake(SNAKE_MARGIN, 544, SNAKE_LENGTH);
+		snake_ -> direction(UP);
+	}
+	else if (y <= -SNAKE_LENGTH) 
+	{
+		delete snake_;
+		snake_ = new Snake(960-SNAKE_SIZE-SNAKE_MARGIN, -SNAKE_SIZE, SNAKE_LENGTH);
+		snake_ -> direction(DOWN);
+	}
+
+	snake_ -> update();
+}
+
 void Menu::draw (void)
 {
-	title_.draw();
+	snake_ -> draw();
 	
 	for (auto it = options_.begin(); it != options_.end(); it++)
 	{
 		(*it) -> draw();
 	}
+
+	title_.draw();
+	signature_.draw(-90);
+}
+
+const char* Menu::getName (void) const
+{
+	return "MENU";
 }

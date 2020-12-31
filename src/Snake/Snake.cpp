@@ -18,6 +18,19 @@ Snake::Snake (void):
 	tracker_.setColor(255, 0, 0);
 }
 
+Snake::Snake (float x, float y, int length):
+	facing_(NONE),
+	next_(facing_),
+	head_(nullptr),
+	tracker_(Rectangle(x, y, SQUARE, SQUARE)),
+	speed_(4),
+	counter_(0),
+	tail_(false),
+	max_length_(length)
+{
+	tracker_.setColor(255, 0, 0);
+}
+
 Snake::~Snake (void) 
 {
 	if (head_ != nullptr)
@@ -212,4 +225,19 @@ bool Snake::screenCollision (void) const
 void Snake::grow (void)
 {
 	max_length_ += 50;
+}
+
+float Snake::getPositionX (void) const
+{
+	return tracker_.getPositionX();
+}
+
+float Snake::getPositionY (void) const
+{
+	return tracker_.getPositionY();
+}
+
+DIRECTION Snake::getDirection (void) const
+{
+	return facing_;
 }

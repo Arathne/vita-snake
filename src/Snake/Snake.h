@@ -12,17 +12,22 @@ class Snake
 {
 	public:
 		Snake (void);
+		Snake (float x, float y, int length);
 		~Snake (void);
 		
 		void update (void);
 		void direction (DIRECTION input);
 		void draw (void);
-			
+		
 		bool collided (void) const;
 		bool collided (const Rectangle & rectangle) const;
 		bool screenCollision (void) const;
 
 		void grow (void);
+		
+		float getPositionX (void) const;
+		float getPositionY (void) const;
+		DIRECTION getDirection (void) const;
 
 	private:
 		void changeHead (void);
