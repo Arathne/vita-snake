@@ -195,12 +195,14 @@ const Text & Text::operator = (const Text & rhs)
 
 void Text::draw (void)
 {
-	GameRenderer::draw(x_, y_, width_, height_, color_, *texture_);
+	if (texture_ != nullptr)
+		GameRenderer::draw(x_, y_, width_, height_, color_, *texture_);
 }
 
 void Text::draw (double angle)
 {
-	GameRenderer::draw(x_, y_, width_, height_, color_, *texture_, angle);
+	if (texture_ != nullptr)
+		GameRenderer::draw(x_, y_, width_, height_, color_, *texture_, angle);
 }
 
 /* PRIVATE */

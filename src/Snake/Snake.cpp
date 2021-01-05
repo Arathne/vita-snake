@@ -10,23 +10,25 @@ Snake::Snake (void):
 	next_(facing_),
 	head_(nullptr),
 	tracker_(Rectangle((960/2)-(SQUARE/2), (544/2)-(SQUARE/2), SQUARE, SQUARE)),
-	speed_(4),
+	speed_(GameSettings::getSpeed()),
 	counter_(0),
 	tail_(false),
-	max_length_(100)
+	max_length_(GameSettings::getStartLength()),
+	grow_(GameSettings::getGrowthRate())
 {
 	tracker_.setColor(255, 0, 0);
 }
 
-Snake::Snake (float x, float y, int length):
+Snake::Snake (float x, float y):
 	facing_(NONE),
 	next_(facing_),
 	head_(nullptr),
 	tracker_(Rectangle(x, y, SQUARE, SQUARE)),
-	speed_(4),
+	speed_(GameSettings::getSpeed()),
 	counter_(0),
 	tail_(false),
-	max_length_(length)
+	max_length_(GameSettings::getStartLength()),
+	grow_(GameSettings::getGrowthRate())
 {
 	tracker_.setColor(255, 0, 0);
 }
@@ -224,7 +226,7 @@ bool Snake::screenCollision (void) const
 
 void Snake::grow (void)
 {
-	max_length_ += 50;
+	max_length_ += grow_;
 }
 
 float Snake::getPositionX (void) const

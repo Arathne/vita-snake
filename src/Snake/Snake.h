@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "../Rectangle.h"
-
+#include "../GameSettings.h"
 #include "DirectionEnum.h"
 #include "BodyFactory.h"
 
@@ -12,7 +12,7 @@ class Snake
 {
 	public:
 		Snake (void);
-		Snake (float x, float y, int length);
+		Snake (float x, float y);
 		~Snake (void);
 		
 		void update (void);
@@ -47,6 +47,7 @@ class Snake
 		int counter_;
 		bool tail_;
 		int max_length_;
+		int grow_;
 };
 
 #endif

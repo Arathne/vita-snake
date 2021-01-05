@@ -11,6 +11,7 @@ class Input
 		static void poll (void);
 		static bool began (SceCtrlButtons button);
 		static bool ended (SceCtrlButtons button);
+		static bool active (SceCtrlButtons button);
 
 	private:
 		Input (void);

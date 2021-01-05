@@ -10,17 +10,17 @@ Node* Game::process (void)
 {
 	Game::input();
 	snake_.update();
-
+	
 	GameRenderer::clear();
 	food_.draw();
 	snake_.draw();
 	GameRenderer::present();
 	
 	collision_.food();
-
+	
 	if (collision_.gameOver())
 		return nullptr;	
-
+	
 	return this;
 }
 
@@ -34,9 +34,4 @@ void Game::input (void)
 		snake_.direction(LEFT);
 	else if (Input::began(SCE_CTRL_RIGHT))
 		snake_.direction(RIGHT);
-}
-
-const char* Game::getName (void) const
-{
-	return "GAME";
 }

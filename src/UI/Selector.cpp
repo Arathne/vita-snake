@@ -32,6 +32,10 @@ void Selector::unhover (void)
 	hover_ = false;
 }
 
+void Selector::right (void) {}
+
+void Selector::left (void) {}
+
 Node & Selector::select (void) const
 {
 	return *state_;

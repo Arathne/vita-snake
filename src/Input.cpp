@@ -26,6 +26,14 @@ bool Input::ended (SceCtrlButtons button)
 	return false;
 }
 
+bool Input::active (SceCtrlButtons button)
+{
+	if (instance.data_.buttons == button)
+		return true;
+
+	return false;
+}
+
 /* INSTANCE */
 
 Input::Input (void)

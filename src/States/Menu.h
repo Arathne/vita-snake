@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include "Node.h"
+#include "Settings.h"
 #include "Game.h"
 #include "../Text.h"
 #include "../UI/Selector.h"
@@ -14,7 +15,6 @@ class Menu : public Node
 		~Menu (void);
 
 		Node* process (void);
-		const char* getName (void) const;
 	
 	private:
 		void input (void);

@@ -2,8 +2,6 @@
 #define SELECTOR_H
 
 #include "Option.h"
-#include "../Text.h"
-#include "../GameRenderer.h"
 
 class Selector : public Option
 {
@@ -15,6 +13,9 @@ class Selector : public Option
 		void hover (void);
 		void unhover (void);
 		Node & select (void) const;
+		
+		void right (void);
+		void left (void);
 
 		void draw (void);
 	

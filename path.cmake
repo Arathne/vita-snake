@@ -3,6 +3,7 @@ set( CPP
 	src/Color.cpp
 	src/Text.cpp
 	src/GameRenderer.cpp
+	src/GameSettings.cpp
 	src/Input.cpp
 	src/Rectangle.cpp
 	src/Food.cpp
@@ -17,5 +18,10 @@ set( CPP
 	src/States/StateManager.cpp
 	src/States/Menu.cpp
 	src/States/Game.cpp
+	src/States/Settings.cpp
 	src/UI/Selector.cpp
+	src/UI/Slider.cpp
+	src/Command/SetSpeedCommand.cpp
+	src/Command/SetLengthCommand.cpp
+	src/Command/SetGrowthRateCommand.cpp
 )
